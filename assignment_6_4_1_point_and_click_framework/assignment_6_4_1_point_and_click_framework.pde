@@ -1,8 +1,12 @@
 int wwidth = 800;
 int wheight = 800;
-
+int bX = 200;
+int bY = 100;
 final SceneManager sceneManager = new SceneManager();
 final InventoryManager inventoryManager = new InventoryManager();
+//DIALOG BOX
+boolean mouseWentDown = false;
+PImage dialog;
 
 void settings()
 {
@@ -11,10 +15,9 @@ void settings()
 
 void setup()
 {
-  
+
   Collectable apple = new Collectable("apple", "back04_apple.png");
   MoveToSceneObject object7 = new MoveToSceneObject("goToScene04_scene01", 206, 461, 50, 50, "arrowUp.png", "scene04");
-  
   Scene scene01 = new Scene("scene01", "back01.png");
   RequireObject loupe01 = new RequireObject("requiresApple_scene01", 206, 461, 50, 50, "zoom.png", "You need an Apple before getting here!", apple, object7);
   loupe01.setHoverImage("zoomIn.png");
@@ -29,13 +32,13 @@ void setup()
   scene01.addGameObject(object2);
   MoveToSceneObject restaurantSceneMoveTo = new MoveToSceneObject("goToScene06_scene01", 388, 440, 50, 50, "arrowUp.png", "scene05");
   scene01.addGameObject(restaurantSceneMoveTo);
-  
+
   Scene scene02 = new Scene("scene02", "back02.png");
   MoveToSceneObject object3 = new MoveToSceneObject("goBack_scene02", 350, 700, 50, 50, "arrowDown.png", true);
   scene02.addGameObject(object3);
   MoveToSceneObject object4 = new MoveToSceneObject("goToScene03_scene02", 441, 494, 50, 50, "arrowUp.png", "scene03");
   scene02.addGameObject(object4);
-  
+
   Scene scene03 = new Scene("scene03", "back04.png");
   MoveToSceneObject object5 = new MoveToSceneObject("goBack_scene03", 203, 673, 50, 50, "arrowDown.png", true);
   scene03.addGameObject(object5);
@@ -45,13 +48,13 @@ void setup()
   scene03.addGameObject(object9);
   CollectableObject object8 = new CollectableObject("apple_scene03", 600, 366, 123, 101, apple);
   scene03.addGameObject(object8);
-  
+
   Scene scene04 = new Scene("scene04", "back03.png");
   TextObject endGame = new TextObject("smallText_scene04", 430, 590, 50, 50, "medal1.png", "Congratulations. You finished the game!");
   scene04.addGameObject(endGame);
-  
+
   //Scene scene05 = ...
-  
+  dialog = loadImage("arrowDown.png");
   sceneManager.addScene(scene01);
   sceneManager.addScene(scene02);
   sceneManager.addScene(scene03);
@@ -66,6 +69,27 @@ void draw()
   inventoryManager.drawSlots();
   inventoryManager.drawCollectables();
   
+  //SIMPLE DIALOG BOX
+  image(dialog, 200, 100);
+  if (mouseX > bX && mouseX < (bX + dialog.width) &&
+    mouseY > bY && mouseY < (bY + dialog.height)) {
+
+    if (mouseWentDown)
+    {
+      //We will add images later
+      int posX = 0;
+      int posY = 648;
+      int boxSizeX = 800;
+      int boxSizeY = 153;
+      fill(0);
+      rect(posX, posY, boxSizeX, boxSizeY);
+      fill(255);
+      text("THE STORY BLA BLA", posX+13, posY+33);
+    }
+  }
+  else{
+  mouseWentDown = false;
+  }
 }
 
 void mouseMoved() {
@@ -74,4 +98,5 @@ void mouseMoved() {
 
 void mouseClicked() {
   sceneManager.getCurrentScene().mouseClicked();
+  mouseWentDown = true;
 }

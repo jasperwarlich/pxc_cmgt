@@ -3,7 +3,7 @@ class TextObject extends GameObject {
   private boolean displayText;
   private float textWidth;
   private float textHeight;
-  
+  boolean buttonClicked;
   public TextObject(String identifier, int x, int y, int owidth, 
                     int oheight, String gameObjectImageFile, String text) {
     super(identifier, x, y, owidth, oheight, gameObjectImageFile);
@@ -11,6 +11,7 @@ class TextObject extends GameObject {
     displayText = false;
     calculateTextArea(); //Automatically calculates the area 
                          //necessary to display the entire text.
+    
   }
   @Override
   public void draw() {

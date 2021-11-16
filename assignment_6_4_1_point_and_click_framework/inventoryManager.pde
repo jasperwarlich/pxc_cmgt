@@ -44,7 +44,7 @@ class InventoryManager {
     int x = 0;
     for(int i = 0; i < 3; i++) {
       stroke(255);
-      fill(0);
+      fill(0, 55);
       rect(x,0,80,80);
       x += 80;
     }
