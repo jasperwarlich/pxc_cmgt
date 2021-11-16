@@ -1,6 +1,6 @@
 int wwidth = 800;
 int wheight = 800;
-
+//asdasdasd
 final SceneManager sceneManager = new SceneManager();
 final InventoryManager inventoryManager = new InventoryManager();
 
