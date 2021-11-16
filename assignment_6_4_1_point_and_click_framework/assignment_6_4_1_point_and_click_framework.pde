@@ -11,6 +11,7 @@ void settings()
 
 void setup()
 {
+  
   Collectable apple = new Collectable("apple", "back04_apple.png");
   MoveToSceneObject object7 = new MoveToSceneObject("goToScene04_scene01", 206, 461, 50, 50, "arrowUp.png", "scene04");
   
@@ -40,6 +41,10 @@ void setup()
   scene03.addGameObject(object5);
   CollectableObject object6 = new CollectableObject("apple_scene03", 325, 366, 123, 101, apple);
   scene03.addGameObject(object6);
+  CollectableObject object9 = new CollectableObject("apple_scene03", 500, 366, 123, 101, apple);
+  scene03.addGameObject(object9);
+  CollectableObject object8 = new CollectableObject("apple_scene03", 600, 366, 123, 101, apple);
+  scene03.addGameObject(object8);
   
   Scene scene04 = new Scene("scene04", "back03.png");
   TextObject endGame = new TextObject("smallText_scene04", 430, 590, 50, 50, "medal1.png", "Congratulations. You finished the game!");
@@ -58,6 +63,9 @@ void draw()
   sceneManager.getCurrentScene().draw(wwidth, wheight);
   sceneManager.getCurrentScene().updateScene();
   inventoryManager.clearMarkedForDeathCollectables();
+  inventoryManager.drawSlots();
+  inventoryManager.drawCollectables();
+  
 }
 
 void mouseMoved() {

@@ -5,7 +5,7 @@ String backgroundName = "background.png";
 //
 void setup() {
   //The size should be == to the background size
-  size(900, 506);
+  size(900,506);
   background = loadImage(backgroundName);
   scenes = new Scenes(background, backgroundName);
 }
