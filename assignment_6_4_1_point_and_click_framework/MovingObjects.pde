@@ -5,7 +5,7 @@ class Moving {
   float mousePosX;
   float mousePosY;
   int size = 50;
-  float speed = .01f;
+  float speed = .03f;
   void update() {
     fill(0);
     posX = lerp(posX, mousePosX, speed);
