@@ -1,12 +1,15 @@
 int wwidth = 800;
 int wheight = 800;
-int bX = 200;
-int bY = 100;
+
 final SceneManager sceneManager = new SceneManager();
 final InventoryManager inventoryManager = new InventoryManager();
+
 //DIALOG BOX
 boolean mouseWentDown = false;
 PImage dialog;
+int bX = 200;
+int bY = 100;
+StoryBox dialogBox;
 
 void settings()
 {
@@ -15,7 +18,6 @@ void settings()
 
 void setup()
 {
-
   Collectable apple = new Collectable("apple", "back04_apple.png");
   MoveToSceneObject object7 = new MoveToSceneObject("goToScene04_scene01", 206, 461, 50, 50, "arrowUp.png", "scene04");
   Scene scene01 = new Scene("scene01", "back01.png");
@@ -53,8 +55,12 @@ void setup()
   TextObject endGame = new TextObject("smallText_scene04", 430, 590, 50, 50, "medal1.png", "Congratulations. You finished the game!");
   scene04.addGameObject(endGame);
 
-  //Scene scene05 = ...
+  //Dialog Box
   dialog = loadImage("arrowDown.png");
+  dialogBox = new StoryBox(dialog, bX, bY);
+  //Scene scene05 = ...
+
+
   sceneManager.addScene(scene01);
   sceneManager.addScene(scene02);
   sceneManager.addScene(scene03);
@@ -68,28 +74,9 @@ void draw()
   inventoryManager.clearMarkedForDeathCollectables();
   inventoryManager.drawSlots();
   inventoryManager.drawCollectables();
-  
-  //SIMPLE DIALOG BOX
-  image(dialog, 200, 100);
-  if (mouseX > bX && mouseX < (bX + dialog.width) &&
-    mouseY > bY && mouseY < (bY + dialog.height)) {
 
-    if (mouseWentDown)
-    {
-      //We will add images later
-      int posX = 0;
-      int posY = 648;
-      int boxSizeX = 800;
-      int boxSizeY = 153;
-      fill(0);
-      rect(posX, posY, boxSizeX, boxSizeY);
-      fill(255);
-      text("THE STORY BLA BLA", posX+13, posY+33);
-    }
-  }
-  else{
-  mouseWentDown = false;
-  }
+  //SIMPLE DIALOG BOX
+  dialogBox.update();
 }
 
 void mouseMoved() {
