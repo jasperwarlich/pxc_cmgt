@@ -4,9 +4,9 @@ class StoryBox {
   int bY;
   String text;
   int posX = 0;
-  int posY = 648;
-  int boxSizeX = 800;
-  int boxSizeY = 153;
+  int posY = 550;
+  int boxSizeX = 1280;
+  int boxSizeY = 300;
 
   StoryBox(PImage pDialog, int pBx, int pBy, String pText) {
     dialog = pDialog;
