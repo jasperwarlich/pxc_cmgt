@@ -14,8 +14,7 @@ StoryBox dialogBox;
 
 //Moving object
 Moving moving;
-boolean isPlayer;
-Scene bayScene;
+
 void settings()
 {
   size(wwidth, wheight);
@@ -39,7 +38,7 @@ void setup()
 
 
 
-  bayScene = new Scene("bayScene", "back01.png");
+  Scene bayScene = new Scene("bayScene", "back01.png");
   MoveToSceneObject object3 = new MoveToSceneObject("goBack_scene02", 350, 500, 50, 50, "arrowDown.png", true);
   bayScene.addGameObject(object3);
   CollectableObject hammer1 = new CollectableObject("hammer1", 300, 300, 100, 100, hammer);
@@ -47,7 +46,7 @@ void setup()
   CollectableObject rope1 = new CollectableObject("rope1", 800, 300, 100, 100, rope);
   bayScene.addGameObject(rope1);
 
-  Scene newScene = new Scene("newScene", "back02.png");
+  //Scene newScene = new Scene("newScene", "back02.png");
 
   //CollectableObject object6 = new CollectableObject("apple_scene03", 325, 366, 123, 101, apple);
 
@@ -126,15 +125,8 @@ void draw()
 
   //MOVING
 
-  if (bayScene.sceneName == "bayScene") {
-    isPlayer = false;
-  } else
-  {
-    isPlayer = true;
-  }
-  if (isPlayer) {
-    moving.update();
-  }
+  moving.update();
+  //println(isPlayer, bayScene.sceneName);
 }
 void mouseMoved() {
   sceneManager.getCurrentScene().mouseMoved();
