@@ -17,35 +17,35 @@ StoryBox dialogBox;
 void settings()
 {
   size(wwidth, wheight);
+
 }
 
 void setup()
 {
-
+    frameRate(60);
   Collectable rope = new Collectable("rope", "rope.png");
   Collectable hammer = new Collectable("hammer", "hammer.png");
 
+
+  // FIRST SCENE
   Scene strandedIsland = new Scene("strandedIsland", "strandedisland.jpg");
   MoveToSceneObject toBay = new MoveToSceneObject("toBay", 1100, 400, 454/3, 286/3, "arrowRight.png", "bayScene");
   strandedIsland.addGameObject(toBay);
   MoveToSceneObject moveOn = new MoveToSceneObject("newScene", 1100, 400, 454/3, 286/3, "arrowRight.png", "newScene");
-  strandedIsland.addGameObject(moveOn);
-  RequireObject shipObj2 = new RequireObject("requiresRope", 500, 400, 100, 100, "quest.png", "You need to find a rope!", rope, moveOn);
-  RequireObject shipObj1 = new RequireObject("requiresHammer", 500, 400, 100, 100, "quest.png", "You need to find a hammer!", hammer, shipObj2);
-  strandedIsland.addGameObject(shipObj2);
+  CollectableObject rope1 = new CollectableObject("rope1", 1150, 200, 50, 50, rope);
+  strandedIsland.addGameObject(rope1);
+  RequireObject shipObj2 = new RequireObject("requiresRope", 500, 400, 100, 100, "quest.png", "You need to find a hammer!", hammer, moveOn);
+  RequireObject shipObj1 = new RequireObject("requiresHammer", 500, 400, 100, 100, "quest.png", "You need to find a rope!", rope, shipObj2);
   strandedIsland.addGameObject(shipObj1);
 
 
-
-  Scene bayScene = new Scene("bayScene", "back01.png");
+  // SECOND SCENE
+  Scene bayScene = new Scene("bayScene", "piratecabin.jpg");
   MoveToSceneObject object3 = new MoveToSceneObject("goBack_scene02", 350, 500, 50, 50, "arrowDown.png", true);
   bayScene.addGameObject(object3);
   CollectableObject hammer1 = new CollectableObject("hammer1", 300, 300, 100, 100, hammer);
   bayScene.addGameObject(hammer1);
-  CollectableObject rope1 = new CollectableObject("rope1", 800, 300, 100, 100, rope);
-  bayScene.addGameObject(rope1);
   MovingObject cube = new MovingObject("cube", 0, 0, 100, 100);
-  bayScene.addGameObject(cube);
   
   Scene newScene = new Scene("newScene", "back02.png");
  
@@ -111,6 +111,7 @@ void setup()
 
   sceneManager.addScene(strandedIsland);
   sceneManager.addScene(bayScene);
+  sceneManager.addScene(newScene);
   //sceneManager.addScene(scene01);
   //sceneManager.addScene(scene02);
   //sceneManager.addScene(scene03);

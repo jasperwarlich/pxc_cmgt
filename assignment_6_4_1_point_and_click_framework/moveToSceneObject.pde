@@ -37,4 +37,8 @@ class MoveToSceneObject extends GameObject {
       }
     }
   }
+  
+  
+  
+
 }

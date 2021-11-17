@@ -41,18 +41,25 @@ class GameObject {
         image(gameObjectImage, x, y, owidth, oheight);
       }
     }
-
-    if (mouseIsHovering) {
-      rectMode(CORNER);
-      fill(0);
-      rect(mouseX, mouseY, 85, 50, 20);
-      fill(255);
-      text("Go further!", mouseX + 10, mouseY +23);
+    
+    if(mouseIsHovering) {
       cursor(HAND);
-    } else if(!mouseIsHovering) {
+    } else {
       cursor(ARROW);
     }
   }
+
+  //  if (mouseIsHovering) {
+  //    rectMode(CORNER);
+  //    fill(0);
+  //    rect(mouseX, mouseY, 85, 50, 20);
+  //    fill(255);
+  //    text("Go further!", mouseX + 10, mouseY +23);
+  //    cursor(HAND);
+  //  } else if(!mouseIsHovering) {
+  //    cursor(ARROW);
+  //  }
+  //}
 
   public void mouseMoved() {
     mouseIsHovering = false;

@@ -22,6 +22,17 @@ class CollectableObject extends GameObject {
 
   @Override
     public void draw() {
+       if (mouseIsHovering) {
+      rectMode(CORNER);
+      fill(0);
+      rect(mouseX, mouseY, 85, 50, 20);
+      fill(255);
+      text("PICK UP", mouseX + 20, mouseY +30);
+      cursor(HAND);
+    } else if(!mouseIsHovering) {
+      cursor(ARROW);
+    }
+  
     super.draw();
   }
 
