@@ -2,11 +2,12 @@ class StoryBox {
   PImage dialog;
   int bX;
   int bY;
-
-  StoryBox(PImage pDialog, int pBx, int pBy) {
+  String text;
+  StoryBox(PImage pDialog, int pBx, int pBy, String pText) {
     dialog = pDialog;
     bX = pBx;
     bY = pBy;
+    text = pText;
   }
 
   void update() {
@@ -23,7 +24,7 @@ class StoryBox {
         fill(0);
         rect(posX, posY, boxSizeX, boxSizeY);
         fill(255);
-        text("THE STORY BLA BLA", posX+13, posY+33);
+        text(text, posX+13, posY+33);
       }
     } else {
       mouseWentDown = false;

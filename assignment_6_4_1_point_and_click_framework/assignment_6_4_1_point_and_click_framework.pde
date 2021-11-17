@@ -9,7 +9,11 @@ boolean mouseWentDown = false;
 PImage dialog;
 int bX = 200;
 int bY = 100;
+String text = "badfbdafbadfb";
 StoryBox dialogBox;
+
+//Moving object
+Moving moving;
 
 void settings()
 {
@@ -63,10 +67,20 @@ void setup()
   //TextObject endGame = new TextObject("smallText_scene04", 430, 590, 50, 50, "medal1.png", "Congratulations. You finished the game!");
   //scene04.addGameObject(endGame);
 
+<<<<<<< HEAD
   ////Dialog Box
   //dialog = loadImage("arrowDown.png");
   //dialogBox = new StoryBox(dialog, bX, bY);
   ////Scene scene05 = ...
+=======
+  //Dialog Box
+  dialog = loadImage("arrowDown.png");
+  dialogBox = new StoryBox(dialog, bX, bY, text);
+  
+  //Moving
+  moving = new Moving();
+  //Scene scene05 = ...
+>>>>>>> bb0170f1e8a8b79d965d108edb2e801065632dec
 
   
   sceneManager.addScene(strandedIsland);
@@ -86,7 +100,15 @@ void draw()
   inventoryManager.drawCollectables();
 
   //SIMPLE DIALOG BOX
+<<<<<<< HEAD
   //dialogBox.update();
+=======
+  dialogBox.update();
+  
+  //MOVING
+  moving.update();
+  
+>>>>>>> bb0170f1e8a8b79d965d108edb2e801065632dec
 }
 
 void mouseMoved() {
