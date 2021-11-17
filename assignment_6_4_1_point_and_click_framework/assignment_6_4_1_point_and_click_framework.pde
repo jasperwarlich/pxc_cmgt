@@ -23,11 +23,34 @@ void settings()
 void setup()
 {
   
+  Collectable rope = new Collectable("rope", "rope.png");
+  Collectable hammer = new Collectable("hammer", "hammer.png");
+  
   Scene strandedIsland = new Scene("strandedIsland", "strandedisland.jpg");
   MoveToSceneObject toBay = new MoveToSceneObject("toBay", 1100, 400, 454/3, 286/3, "arrowRight.png", "bayScene");
   strandedIsland.addGameObject(toBay);
+  MoveToSceneObject moveOn = new MoveToSceneObject("newScene", 1100, 400, 454/3, 286/3, "arrowRight.png", "newScene");
+  strandedIsland.addGameObject(moveOn);
+  RequireObject shipObj2 = new RequireObject("requiresRope", 500, 400, 100,100, "quest.png", "You need to find a rope!", rope, moveOn);
+  RequireObject shipObj1 = new RequireObject("requiresHammer", 500, 400, 100,100, "quest.png", "You need to find a hammer!", hammer, shipObj2);
+  strandedIsland.addGameObject(shipObj2);
+  strandedIsland.addGameObject(shipObj1);
+
+
   
   Scene bayScene = new Scene("bayScene", "back01.png");
+  MoveToSceneObject object3 = new MoveToSceneObject("goBack_scene02", 350, 500, 50, 50, "arrowDown.png", true);
+  bayScene.addGameObject(object3);
+  CollectableObject hammer1 = new CollectableObject("hammer1", 300,300,100,100, hammer);
+  bayScene.addGameObject(hammer1);
+  CollectableObject rope1 = new CollectableObject("rope1", 800,300,100,100, rope);
+  bayScene.addGameObject(rope1);
+  
+  Scene newScene = new Scene("newScene", "back02.png");
+ 
+  
+    //CollectableObject object6 = new CollectableObject("apple_scene03", 325, 366, 123, 101, apple);
+
   //Collectable apple = new Collectable("apple", "back04_apple.png");
   //Collectable apple2 = new Collectable("apple", "back04_apple.png");
   //Collectable apple3 = new Collectable("apple", "back04_apple.png");
@@ -67,12 +90,11 @@ void setup()
   //TextObject endGame = new TextObject("smallText_scene04", 430, 590, 50, 50, "medal1.png", "Congratulations. You finished the game!");
   //scene04.addGameObject(endGame);
 
-<<<<<<< HEAD
   ////Dialog Box
   //dialog = loadImage("arrowDown.png");
   //dialogBox = new StoryBox(dialog, bX, bY);
   ////Scene scene05 = ...
-=======
+
   //Dialog Box
   dialog = loadImage("arrowDown.png");
   dialogBox = new StoryBox(dialog, bX, bY, text);
@@ -80,7 +102,6 @@ void setup()
   //Moving
   moving = new Moving();
   //Scene scene05 = ...
->>>>>>> bb0170f1e8a8b79d965d108edb2e801065632dec
 
   
   sceneManager.addScene(strandedIsland);
@@ -100,15 +121,12 @@ void draw()
   inventoryManager.drawCollectables();
 
   //SIMPLE DIALOG BOX
-<<<<<<< HEAD
   //dialogBox.update();
-=======
   dialogBox.update();
   
   //MOVING
   moving.update();
   
->>>>>>> bb0170f1e8a8b79d965d108edb2e801065632dec
 }
 
 void mouseMoved() {
