@@ -46,11 +46,15 @@ void setup()
   bayScene.addGameObject(rope1);
   MovingObject cube = new MovingObject("cube", 0, 0, 100, 100);
   bayScene.addGameObject(cube);
+
+  // Scene newScene = new Scene("newScene", "back02.png");
+  Scene bar = new Scene("barScene", "bar.png");
+  MoveToSceneObject toBar = new MoveToSceneObject("toBar", 1100, 400, 100, 80, "arrowRight.png", "barScene");
+  bayScene.addGameObject(toBar);
+  MoveToSceneObject goB = new MoveToSceneObject("toBay", 500, 400, 100, 80, "arrowDown.png", true);
+  bar.addGameObject(goB);
   
-  Scene newScene = new Scene("newScene", "back02.png");
- 
-  
-    //CollectableObject object6 = new CollectableObject("apple_scene03", 325, 366, 123, 101, apple);
+  //CollectableObject object6 = new CollectableObject("apple_scene03", 325, 366, 123, 101, apple);
 
 
   //Scene newScene = new Scene("newScene", "back02.png");
@@ -111,7 +115,7 @@ void setup()
 
   sceneManager.addScene(strandedIsland);
   sceneManager.addScene(bayScene);
-  //sceneManager.addScene(scene01);
+  sceneManager.addScene(bar);
   //sceneManager.addScene(scene02);
   //sceneManager.addScene(scene03);
   //sceneManager.addScene(scene04);
