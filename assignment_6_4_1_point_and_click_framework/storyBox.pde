@@ -3,6 +3,11 @@ class StoryBox {
   int bX;
   int bY;
   String text;
+  int posX = 0;
+  int posY = 648;
+  int boxSizeX = 800;
+  int boxSizeY = 153;
+
   StoryBox(PImage pDialog, int pBx, int pBy, String pText) {
     dialog = pDialog;
     bX = pBx;
@@ -14,13 +19,15 @@ class StoryBox {
     image(dialog, bX, bY);
     if (mouseX > bX && mouseX < (bX + dialog.width) &&
       mouseY > bY && mouseY < (bY + dialog.height)) {
+      rectMode(CORNER);
+      fill(0);
+      rect(mouseX, mouseY, 85, 50, 20);
+      fill(255);
+      text("Click to open \n the dialog!", mouseX + 10, mouseY +23);
       if (mouseWentDown)
       {
         //We will add images later
-        int posX = 0;
-        int posY = 648;
-        int boxSizeX = 800;
-        int boxSizeY = 153;
+
         fill(0);
         rect(posX, posY, boxSizeX, boxSizeY);
         fill(255);
