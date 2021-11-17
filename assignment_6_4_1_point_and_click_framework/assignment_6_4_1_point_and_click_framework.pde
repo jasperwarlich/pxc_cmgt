@@ -9,7 +9,11 @@ boolean mouseWentDown = false;
 PImage dialog;
 int bX = 200;
 int bY = 100;
+String text = "badfbdafbadfb";
 StoryBox dialogBox;
+
+//Moving object
+Moving moving;
 
 void settings()
 {
@@ -57,7 +61,10 @@ void setup()
 
   //Dialog Box
   dialog = loadImage("arrowDown.png");
-  dialogBox = new StoryBox(dialog, bX, bY);
+  dialogBox = new StoryBox(dialog, bX, bY, text);
+  
+  //Moving
+  moving = new Moving();
   //Scene scene05 = ...
 
 
@@ -77,6 +84,10 @@ void draw()
 
   //SIMPLE DIALOG BOX
   dialogBox.update();
+  
+  //MOVING
+  moving.update();
+  
 }
 
 void mouseMoved() {
