@@ -41,6 +41,12 @@ class GameObject {
         image(gameObjectImage, x, y, owidth, oheight);
       }
     }
+    
+    if(mouseIsHovering) {
+      cursor(HAND);
+    } else {
+      cursor(ARROW);
+    }
   }
   
   public void mouseMoved() {
