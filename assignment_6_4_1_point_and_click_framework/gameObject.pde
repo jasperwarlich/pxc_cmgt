@@ -44,7 +44,7 @@ class GameObject {
     
     if(mouseIsHovering) {
       cursor(HAND);
-    } else {
+    } else if(!mouseIsHovering) {
       cursor(ARROW);
     }
   }

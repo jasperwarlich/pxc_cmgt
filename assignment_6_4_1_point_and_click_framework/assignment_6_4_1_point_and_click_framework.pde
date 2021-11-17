@@ -13,7 +13,6 @@ String text = "badfbdafbadfb";
 StoryBox dialogBox;
 
 //Moving object
-Moving moving;
 
 void settings()
 {
@@ -45,6 +44,8 @@ void setup()
   bayScene.addGameObject(hammer1);
   CollectableObject rope1 = new CollectableObject("rope1", 800,300,100,100, rope);
   bayScene.addGameObject(rope1);
+  MovingObject cube = new MovingObject("cube", 0, 0, 100, 100);
+  bayScene.addGameObject(cube);
   
   Scene newScene = new Scene("newScene", "back02.png");
  
@@ -100,7 +101,6 @@ void setup()
   dialogBox = new StoryBox(dialog, bX, bY, text);
   
   //Moving
-  moving = new Moving();
   //Scene scene05 = ...
 
   
@@ -125,7 +125,6 @@ void draw()
   dialogBox.update();
   
   //MOVING
-  moving.update();
   
 }
 
