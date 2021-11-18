@@ -1,40 +1,50 @@
-class StoryBox {
-  PImage dialog;
-  int bX;
-  int bY;
+class StoryBox extends GameObject {
+  String image;
+  int x;
+  int y;
   String text;
   int posX = 0;
   int posY = 550;
-  int boxSizeX = 1280;
-  int boxSizeY = 300;
+  int boxSizeX = owidth;
+  int boxSizeY = oheight;
 
-  StoryBox(PImage pDialog, int pBx, int pBy, String pText) {
-    dialog = pDialog;
-    bX = pBx;
-    bY = pBy;
-    text = pText;
+  boolean dialogShow;
+  boolean pressed;
+  float nextButtonX = 1169;
+  float nextButtonY = 632;
+  float nextButtonW = 80;
+  float nextButtonH = 50;
+
+  String storyText = "blablbablalbalba";
+
+
+  public StoryBox(String identifier, int x, int y, int owidth, int oheight, String image) {
+    super(identifier, x, y, owidth, oheight, image);
+    this.x = x;
+    this.y = y;
+    this.owidth = owidth;
+    this.oheight = oheight;
+    this.image = image;
   }
 
-  void update() {
-    image(dialog, bX, bY);
-    if (mouseX > bX && mouseX < (bX + dialog.width) &&
-      mouseY > bY && mouseY < (bY + dialog.height)) {
-      rectMode(CORNER);
+  void draw() {
+    //println(mouseIsHovering);
+    //println(dialogShow);
+    if (mouseIsHovering && mousePressed)
+    {
+      dialogShow = true;
+    }
+    if (dialogShow) {
       fill(0);
-      rect(mouseX, mouseY, 85, 50, 20);
+      rect(0, 600, 1280, 300);
       fill(255);
-      text("Click to open \n the dialog!", mouseX + 10, mouseY +23);
-      if (mouseWentDown)
-      {
-        //We will add images later
-
-        fill(0);
-        rect(posX, posY, boxSizeX, boxSizeY);
-        fill(255);
-        text(text, posX+13, posY+33);
-      }
-    } else {
-      mouseWentDown = false;
+      text(storyText, 20, 620);
+      rect(nextButtonX, nextButtonY, nextButtonW, nextButtonH, 45);
+      fill(0);
+      text("NEXT!", 1192, 660);
+    }
+    if (mouseX >= nextButtonX && mouseX <= nextButtonX + nextButtonW && mouseY >= nextButtonY && mouseY <= nextButtonY + nextButtonH && mousePressed) {
+      storyText = "34343434343";
     }
   }
 }
