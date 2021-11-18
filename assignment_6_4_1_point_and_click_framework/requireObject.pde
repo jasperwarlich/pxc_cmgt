@@ -1,6 +1,7 @@
 class RequireObject extends TextObject {
   private Collectable collectable;
   private GameObject replaceWith;
+  public boolean isUsed = false;
 
   public RequireObject(String identifier, int x, int y, int owidth, int oheight, 
     String gameObjectImageFile, String text, 
@@ -13,6 +14,7 @@ class RequireObject extends TextObject {
   @Override
     public void mouseClicked() {
     if (mouseIsHovering && inventoryManager.containsCollectable(collectable)) {
+      isUsed = true;
       inventoryManager.removeCollectable(collectable);
       sceneManager.getCurrentScene().removeGameObject(this);
       sceneManager.getCurrentScene().addGameObject(replaceWith);
