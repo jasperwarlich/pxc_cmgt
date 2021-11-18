@@ -9,6 +9,7 @@ class GameObject {
   private PImage gameObjectImage;
   private PImage gameObjectImageHover;
   protected boolean mouseIsHovering;
+  boolean hand = false;
 
   public GameObject(String identifier, int x, int y, int owidth, int oheight) {
     this(identifier, x, y, owidth, oheight, "");
@@ -50,7 +51,22 @@ class GameObject {
     //  cursor(ARROW);
     //}
     
+    if(mouseIsHovering) {
+      cursor(HAND);
+      hand = true;
+    } else {
+      cursor(ARROW);
+      hand = false;
+    }
+     if(hand == true) {
+       cursor(HAND);
+  } else {
+    cursor(ARROW);
+
   }
+  }
+  
+ 
 
   //  if (mouseIsHovering) {
   //    rectMode(CORNER);

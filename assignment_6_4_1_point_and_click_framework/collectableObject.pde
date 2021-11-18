@@ -25,9 +25,9 @@ class CollectableObject extends GameObject {
        if (mouseIsHovering) {
       rectMode(CORNER);
       fill(0);
-      rect(mouseX, mouseY, 85, 50, 20);
+      rect(mouseX-30, mouseY+20, 85, 50, 20);
       fill(255);
-      text("PICK UP", mouseX + 20, mouseY +30);
+      text("PICK UP", mouseX-10, mouseY +50);
       cursor(HAND);
     } else if(!mouseIsHovering) {
       cursor(ARROW);
