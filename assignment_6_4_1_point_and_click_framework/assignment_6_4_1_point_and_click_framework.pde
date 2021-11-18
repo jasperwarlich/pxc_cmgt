@@ -131,7 +131,8 @@ void draw()
   inventoryManager.clearMarkedForDeathCollectables();
   inventoryManager.drawSlots();
   inventoryManager.drawCollectables();
-
+  mouseWentDown = false;
+  //println(mouseWentDown);
 }
 void mouseMoved() {
   sceneManager.getCurrentScene().mouseMoved();

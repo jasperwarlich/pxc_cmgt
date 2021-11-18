@@ -17,7 +17,6 @@ class StoryBox extends GameObject {
 
   String storyText = "blablbablalbalba";
 
-
   public StoryBox(String identifier, int x, int y, int owidth, int oheight, String image) {
     super(identifier, x, y, owidth, oheight, image);
     this.x = x;
@@ -28,9 +27,8 @@ class StoryBox extends GameObject {
   }
 
   void draw() {
-    //println(mouseIsHovering);
-    //println(dialogShow);
-    if (mouseIsHovering && mousePressed)
+
+    if (mouseIsHovering && mouseWentDown)
     {
       dialogShow = true;
     }
@@ -43,8 +41,19 @@ class StoryBox extends GameObject {
       fill(0);
       text("NEXT!", 1192, 660);
     }
-    if (mouseX >= nextButtonX && mouseX <= nextButtonX + nextButtonW && mouseY >= nextButtonY && mouseY <= nextButtonY + nextButtonH && mousePressed) {
+    if (mouseX >= nextButtonX && mouseX <= nextButtonX + nextButtonW && mouseY >= nextButtonY && mouseY <= nextButtonY + nextButtonH && mouseWentDown) {
       storyText = "34343434343";
+    }
+    if (storyText == "34343434343")
+    {
+      fill(255);
+      rect(nextButtonX-100, nextButtonY, nextButtonW, nextButtonH, 45);
+      fill(0);
+      text("Accept!", 1090, 660);
+      if(mouseX >= nextButtonX - 100 && mouseX <= nextButtonX - 100 + nextButtonW && mouseY >= nextButtonY && mouseY <= nextButtonY + nextButtonH && mouseWentDown)
+      {
+      
+      }
     }
   }
 }
