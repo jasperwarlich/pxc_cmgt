@@ -3,20 +3,21 @@ class StoryBox extends GameObject {
   PImage gameObjectImage;
   int x;
   int y;
-  String text;
-  int posX = 0;
-  int posY = 550;
+
   int owidth;
   int oheight;
 
   boolean dialogShow;
+
+  String[] asd;
+  int currentText = 0;
 
   float nextButtonX = 1169;
   float nextButtonY = 632;
   float nextButtonW = 80;
   float nextButtonH = 50;
 
-  String storyText = "blablbablalbalba";
+  String storyText = "Welcome sailor! I heard you are an adventurer. I have something for you. A map! \n This will lead you to the biggest treasure you have ever seen. But be careful, it is very dagerous!";
 
   public StoryBox(String identifier, int x, int y, int owidth, int oheight, String gameObjectImageFile) {
     super(identifier, x, y, owidth, oheight, gameObjectImageFile);
@@ -28,6 +29,7 @@ class StoryBox extends GameObject {
   }
 
   void draw() {
+
     image(gameObjectImage, x, y, owidth, oheight);
     if (mouseIsHovering && mouseWentDown)
     {
@@ -37,16 +39,17 @@ class StoryBox extends GameObject {
       fill(0);
       rect(0, 600, 1280, 300);
       fill(255);
-      text(storyText, 20, 620);
+      textSize(24);
+      text(storyText, 20, 630);
       rect(nextButtonX, nextButtonY, nextButtonW, nextButtonH, 45);
       fill(0);
+      textSize(12);
       text("NEXT!", 1192, 660);
     }
     if (mouseX >= nextButtonX && mouseX <= nextButtonX + nextButtonW && mouseY >= nextButtonY && mouseY <= nextButtonY + nextButtonH && mouseWentDown) {
-
-      storyText = "34343434343";
+      storyText = "Take the map sailor and go on your adventure!";
     }
-    if (storyText == "34343434343" && dialogShow)
+    if (storyText == "Take the map sailor and go on your adventure!" && dialogShow)
     {
       fill(255);
       rect(nextButtonX-100, nextButtonY, nextButtonW, nextButtonH, 45);

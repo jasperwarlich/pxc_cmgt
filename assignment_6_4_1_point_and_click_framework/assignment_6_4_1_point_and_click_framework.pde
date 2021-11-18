@@ -27,7 +27,8 @@ void setup()
   Collectable rope = new Collectable("rope", "rope.png");
   Collectable hammer = new Collectable("hammer", "hammer.png");
   
-
+  Collectable map = new Collectable("map", "map.png");
+  
   // FIRST SCENE
   Scene strandedIsland = new Scene("strandedIsland", "strandedisland.jpg");
   MoveToSceneObject toBay = new MoveToSceneObject("toBay", 1100, 400, 454/3, 286/3, "arrowRight.png", "bayScene");
@@ -49,7 +50,7 @@ void setup()
   //MovingObject cube = new MovingObject("cube", 0, 0, 100, 100);
 
   //bayScene.addGameObject(cube);
-  
+
   // THIRD SCENE
   // Scene newScene = new Scene("newScene", "back02.png");
   Scene bar = new Scene("barScene", "bar.png");
@@ -59,6 +60,8 @@ void setup()
   bar.addGameObject(goB);
   StoryBox pirate = new StoryBox("pirate", 500, 200, 500, 500, "pirate2.png");
   bar.addGameObject(pirate);
+  CollectableObject map1 = new CollectableObject("map", 1150, 200, 50, 50, map);
+  bar.addGameObject(map1);
 
   //CollectableObject object6 = new CollectableObject("apple_scene03", 325, 366, 123, 101, apple);
 
