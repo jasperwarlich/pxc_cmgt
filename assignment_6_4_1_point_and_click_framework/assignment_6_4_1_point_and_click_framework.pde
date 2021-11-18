@@ -11,7 +11,7 @@ int bX = 200;
 int bY = 100;
 String text = "badfbdafbadfb";
 StoryBox dialogBox;
-
+int x = 5;
 //Moving object
 
 void settings()
@@ -57,9 +57,9 @@ void setup()
   bayScene.addGameObject(toBar);
   MoveToSceneObject goB = new MoveToSceneObject("toBay", 500, 400, 100, 80, "arrowDown.png", true);
   bar.addGameObject(goB);
-  StoryBox pirate1 = new StoryBox("pirate", 650, 200, 500, 500, "pirate.png");
-  bar.addGameObject(pirate1);
-  
+  StoryBox pirate = new StoryBox("pirate", 500, 200, 500, 500, "pirate2.png");
+  bar.addGameObject(pirate);
+
   //CollectableObject object6 = new CollectableObject("apple_scene03", 325, 366, 123, 101, apple);
 
 
