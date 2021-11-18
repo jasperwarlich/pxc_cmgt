@@ -42,6 +42,14 @@ class GameObject {
         image(gameObjectImage, x, y, owidth, oheight);
       }
     }
+    //if(identifier == "pirate" && mouseIsHovering && mousePressed){
+    //println("sdsadas");
+    //}
+    //if(mouseIsHovering) {
+    //  cursor(HAND);
+    //} else {
+    //  cursor(ARROW);
+    //}
     
     if(mouseIsHovering) {
       cursor(HAND);
@@ -54,6 +62,7 @@ class GameObject {
        cursor(HAND);
   } else {
     cursor(ARROW);
+
   }
   }
   
