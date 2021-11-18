@@ -34,7 +34,7 @@ class InventoryManager {
     for (Collectable c : collectables) {
       PImage gameObjectImage;
       gameObjectImage = loadImage(c.getGameObjectImageFile());
-      image(gameObjectImage, x+10, 650, 40, 40);
+      image(gameObjectImage, x+10, 30, 40, 40);
       x += 100;
     }
   }
@@ -51,7 +51,7 @@ class InventoryManager {
     for(Collectable c : collectables) {
        stroke(255);
       fill(0, 55);
-      rect(x, 620, 100, 100);
+      rect(x, 0, 100, 100);
       x += 100;
     }
   }
