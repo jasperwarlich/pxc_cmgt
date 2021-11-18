@@ -13,22 +13,21 @@ String text = "badfbdafbadfb";
 StoryBox dialogBox;
 int x = 5;
 //Moving object
-
+String textt = "COMING SOON...";
 void settings()
 {
   size(wwidth, wheight);
-
 }
 
 void setup()
 {
-  
-    frameRate(60);
+
+  frameRate(60);
   Collectable rope = new Collectable("rope", "rope.png");
   Collectable hammer = new Collectable("hammer", "hammer.png");
-  
+
   Collectable map = new Collectable("map", "map.png");
-  
+
   // FIRST SCENE
   Scene strandedIsland = new Scene("strandedIsland", "strandedisland.jpg");
   MoveToSceneObject toBay = new MoveToSceneObject("toBay", 1100, 400, 454/3, 286/3, "arrowRight.png", "bayScene");
@@ -37,9 +36,16 @@ void setup()
   CollectableObject rope1 = new CollectableObject("rope1", 1150, 200, 50, 50, rope);
   strandedIsland.addGameObject(rope1);
   RequireObject shipObj2 = new RequireObject("requiresRope", 500, 400, 100, 100, "quest.png", "You need to find a hammer!", hammer, moveOn);
-  
+
   RequireObject shipObj1 = new RequireObject("requiresHammer", 500, 400, 100, 100, "quest.png", "You need to find a rope!", rope, shipObj2);
   strandedIsland.addGameObject(shipObj1);
+
+
+  MoveToSceneObject inTheSea = new MoveToSceneObject("seaScene", 50, 600, 100, 100, "arrowLeft2.png", "seaScene");
+  RequireObject newWay = new RequireObject("requiresMap", 50, 600, 100, 100, "arrowLeft2.png", "Talk with the pirate and get the map", map, inTheSea);
+  strandedIsland.addGameObject(newWay);
+
+
   //if(shipObj1.isUsed == true) {
   //    strandedIsland.addGameObject(toBay);
   //}
@@ -47,14 +53,14 @@ void setup()
 
   // SECOND SCENE
   Scene bayScene = new Scene("bayScene", "piratecabin.jpg");
-  MoveToSceneObject object3 = new MoveToSceneObject("goBack_scene02", 350, 500, 50, 50, "arrowDown.png", true);
+  MoveToSceneObject object3 = new MoveToSceneObject("goBack_scene02", 50, 400, 100, 100, "arrowLeft2.png", true);
   bayScene.addGameObject(object3);
   CollectableObject hammer1 = new CollectableObject("hammer1", 300, 300, 100, 100, hammer);
   bayScene.addGameObject(hammer1);
-  MovingObject cube = new MovingObject("cube", 0, 0, 100, 100);
-  bayScene.addGameObject(cube);
-  
-  
+  //MovingObject cube = new MovingObject("cube", 0, 0, 100, 100);
+  //bayScene.addGameObject(cube);
+
+
   // BAR SCENE
   //MovingObject cube = new MovingObject("cube", 0, 0, 100, 100);
 
@@ -63,22 +69,18 @@ void setup()
   // THIRD SCENE
   // Scene newScene = new Scene("newScene", "back02.png");
   Scene bar = new Scene("barScene", "bar.png");
-  MoveToSceneObject toBar = new MoveToSceneObject("toBar", 1100, 400, 100, 80, "arrowRight.png", "barScene");
+  MoveToSceneObject toBar = new MoveToSceneObject("toBar", 1100, 600, 100, 80, "arrowRight.png", "barScene");
   bayScene.addGameObject(toBar);
-  MoveToSceneObject goB = new MoveToSceneObject("toBay", 500, 400, 100, 80, "arrowDown.png", true);
+  MoveToSceneObject goB = new MoveToSceneObject("bayScene", 50, 500, 100, 80, "arrowLeft2.png", true);
   bar.addGameObject(goB);
-  
+
   // SEA SCENE
-  //Scene sea = new Scene("seaScene", "");
-
-  
-
-  
+  Scene sea = new Scene("seaScene", "sea.jpg");
 
   CollectableObject map1 = new CollectableObject("map", 1150, 200, 50, 50, map);
   bar.addGameObject(map1);
-  
-    StoryBox pirate1 = new StoryBox("pirate", 650, 200, 500, 500, "pirate.png", new String[]{"Hello", "Bye", "Welcome"});
+
+  StoryBox pirate1 = new StoryBox("pirate", 650, 200, 500, 500, "pirate2.png", new String[]{"Hello sailor! ", "Bye", "Welcome"});
   bar.addGameObject(pirate1);
 
   //CollectableObject object6 = new CollectableObject("apple_scene03", 325, 366, 123, 101, apple);
@@ -141,7 +143,7 @@ void setup()
   //sceneManager.addScene(newScene);
   //sceneManager.addScene(scene01);
 
-  sceneManager.addScene(bar);
+  sceneManager.addScene(sea);
 
   //sceneManager.addScene(scene02);
   //sceneManager.addScene(scene03);

@@ -45,8 +45,7 @@ class StoryBox extends GameObject {
     image(gameObjectImageFile, x, y, owidth, oheight);
     if (mouseIsHovering && mouseWentDown)
     {
-      dialogShow = true;
-      
+      dialogShow = true;      
     }
 
     if(dialogShow == true) {
