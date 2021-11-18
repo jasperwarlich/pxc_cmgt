@@ -8,8 +8,8 @@ class StoryBox extends GameObject {
   int oheight;
 
   boolean dialogShow;
+  boolean endDialog;
 
-  String[] asd;
   int currentText = 0;
 
   float nextButtonX = 1169;
@@ -41,19 +41,23 @@ class StoryBox extends GameObject {
       fill(255);
       textSize(24);
       text(storyText, 20, 630);
-      rect(nextButtonX, nextButtonY, nextButtonW, nextButtonH, 45);
-      fill(0);
-      textSize(12);
-      text("NEXT!", 1192, 660);
+      if (dialogShow && !endDialog) {
+        rect(nextButtonX, nextButtonY, nextButtonW, nextButtonH, 45);
+        fill(0);
+        textSize(12);
+        text("NEXT!", 1192, 660);
+      }
     }
     if (mouseX >= nextButtonX && mouseX <= nextButtonX + nextButtonW && mouseY >= nextButtonY && mouseY <= nextButtonY + nextButtonH && mouseWentDown) {
       storyText = "Take the map sailor and go on your adventure!";
     }
     if (storyText == "Take the map sailor and go on your adventure!" && dialogShow)
     {
+      endDialog = true;
       fill(255);
       rect(nextButtonX-100, nextButtonY, nextButtonW, nextButtonH, 45);
       fill(0);
+      textSize(12);
       text("Accept!", 1090, 660);
       if (mouseX >= nextButtonX - 100 && mouseX <= nextButtonX - 100 + nextButtonW && mouseY >= nextButtonY && mouseY <= nextButtonY + nextButtonH && mouseWentDown)
       {
