@@ -32,17 +32,12 @@ void setup()
   Scene strandedIsland = new Scene("strandedIsland", "strandedisland.jpg");
   MoveToSceneObject toBay = new MoveToSceneObject("toBay", 1100, 400, 454/3, 286/3, "arrowRight.png", "bayScene");
   strandedIsland.addGameObject(toBay);
-  MoveToSceneObject moveOn = new MoveToSceneObject("newScene", 1100, 400, 454/3, 286/3, "arrowRight.png", "newScene");
+  
   CollectableObject rope1 = new CollectableObject("rope1", 1150, 200, 50, 50, rope);
   strandedIsland.addGameObject(rope1);
-  RequireObject shipObj2 = new RequireObject("requiresRope", 500, 400, 100, 100, "quest.png", "You need to find a hammer!", hammer, moveOn);
-
-  RequireObject shipObj1 = new RequireObject("requiresHammer", 500, 400, 100, 100, "quest.png", "You need to find a rope!", rope, shipObj2);
-  strandedIsland.addGameObject(shipObj1);
-
-
+  
   MoveToSceneObject inTheSea = new MoveToSceneObject("seaScene", 50, 600, 100, 100, "arrowLeft2.png", "seaScene");
-  RequireObject newWay = new RequireObject("requiresMap", 50, 600, 100, 100, "arrowLeft2.png", "Talk with the pirate and get the map", map, inTheSea);
+  RequireObject newWay = new RequireObject("requiresRope", 50, height/2, 100, 100, "quest.png", "Talk with the pirate and get the map", map, inTheSea);
   strandedIsland.addGameObject(newWay);
 
 
@@ -53,10 +48,16 @@ void setup()
 
   // SECOND SCENE
   Scene bayScene = new Scene("bayScene", "piratecabin.jpg");
-  MoveToSceneObject object3 = new MoveToSceneObject("goBack_scene02", 50, 400, 100, 100, "arrowLeft2.png", true);
+  MoveToSceneObject object3 = new MoveToSceneObject("strandedIsland", 50, 400, 100, 100, "arrowLeft2.png", true);
   bayScene.addGameObject(object3);
   CollectableObject hammer1 = new CollectableObject("hammer1", 300, 300, 100, 100, hammer);
   bayScene.addGameObject(hammer1);
+  
+  MoveToSceneObject moveOn = new MoveToSceneObject("barScene", 1100, 400, 454/3, 286/3, "arrowRight.png", "barScene");
+  RequireObject shipObj2 = new RequireObject("requiresRope", 700, 200, 100, 100, "quest.png", "You need to find a hammer!", hammer, moveOn);
+  RequireObject shipObj1 = new RequireObject("requiresHammer", 700, 200, 100, 100, "quest.png", "You need to find a rope!", rope, shipObj2);
+  bayScene.addGameObject(shipObj1);
+
   //MovingObject cube = new MovingObject("cube", 0, 0, 100, 100);
   //bayScene.addGameObject(cube);
 
@@ -69,8 +70,8 @@ void setup()
   // THIRD SCENE
   // Scene newScene = new Scene("newScene", "back02.png");
   Scene bar = new Scene("barScene", "bar.png");
-  MoveToSceneObject toBar = new MoveToSceneObject("toBar", 1100, 600, 100, 80, "arrowRight.png", "barScene");
-  bayScene.addGameObject(toBar);
+  //MoveToSceneObject toBar = new MoveToSceneObject("toBar", 1100, 600, 100, 80, "arrowRight.png", "barScene");
+  //bayScene.addGameObject(toBar);
   MoveToSceneObject goB = new MoveToSceneObject("bayScene", 50, 500, 100, 80, "arrowLeft2.png", true);
   bar.addGameObject(goB);
 
@@ -80,7 +81,7 @@ void setup()
   CollectableObject map1 = new CollectableObject("map", 1150, 200, 50, 50, map);
   bar.addGameObject(map1);
 
-  StoryBox pirate1 = new StoryBox("pirate", 650, 200, 500, 500, "pirate2.png", new String[]{"Hello sailor! ", "Bye", "Welcome"});
+  StoryBox pirate1 = new StoryBox("pirate", 650, 200, 500, 500, "pirate2.png", new String[]{"Hello sailor! I heard that you are looking for a treasure.", " I have the map for this treasure but you have to be careful.  \n This adventure is very dangerous and you will face a lot of difficulties before you reach the gold. \n But if you wanna die, who am I to stop you?", "Here, take the map and go!"});
   bar.addGameObject(pirate1);
 
   //CollectableObject object6 = new CollectableObject("apple_scene03", 325, 366, 123, 101, apple);

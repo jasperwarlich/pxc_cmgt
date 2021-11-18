@@ -51,19 +51,19 @@ class GameObject {
     //  cursor(ARROW);
     //}
     
-    if(mouseIsHovering) {
-      cursor(HAND);
-      hand = true;
-    } else {
-      cursor(ARROW);
-      hand = false;
-    }
-     if(hand == true) {
-       cursor(HAND);
-  } else {
-    cursor(ARROW);
+  //  if(mouseIsHovering) {
+  //    cursor(HAND);
+  //    hand = true;
+  //  } else {
+  //    cursor(ARROW);
+  //    hand = false;
+  //  }
+  //   if(hand == true) {
+  //     cursor(HAND);
+  //} else {
+  //  cursor(ARROW);
 
-  }
+  //}
   }
   
  

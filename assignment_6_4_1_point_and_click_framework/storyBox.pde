@@ -38,10 +38,8 @@ class StoryBox extends GameObject {
     this.textT = text;
   }
 
-
-
   void draw() {
-
+    
     image(gameObjectImageFile, x, y, owidth, oheight);
     if (mouseIsHovering && mouseWentDown)
     {
@@ -53,9 +51,9 @@ class StoryBox extends GameObject {
           dialogShow = false;
           i = 0;
         } else {
+          textSize(20);
           storyText = getText(i);
-          println(i);
-          rectY= 600;
+          rectY= 590;
           fill(0);
           rect(0, rectY, 1280, 300);
           fill(255);
@@ -65,6 +63,7 @@ class StoryBox extends GameObject {
           } else if (i == (textT.length - 1)) {
             rect(nextButtonX, nextButtonY, nextButtonW, nextButtonH, 45);
             fill(0);
+            textSize(16);
             text("CLOSE", 1192, 660);
           }            
     }
@@ -88,6 +87,7 @@ class StoryBox extends GameObject {
   void drawNext() {
     rect(nextButtonX, nextButtonY, nextButtonW, nextButtonH, 45);
     fill(0);
+    textSize(16);
     text("NEXT!", 1192, 660);
   }
 }
