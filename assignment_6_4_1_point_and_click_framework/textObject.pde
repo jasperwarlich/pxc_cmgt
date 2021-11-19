@@ -15,9 +15,11 @@ class TextObject extends GameObject {
     public void draw() {
     super.draw();
     if (displayText) {
+      textSize(13);
       fill(255);
       rect(this.x, this.y, textWidth + 30, textHeight, 8);
       fill(0);
+
       text(text, this.x + 15, this.y + 15, textWidth, textHeight);
     }
   }
@@ -30,6 +32,7 @@ class TextObject extends GameObject {
   }
 
   public void calculateTextArea() {
+   
     textWidth = textWidth(text);
     float remaining = textWidth - 300;
     textWidth = (textWidth > 300) ? 300 : textWidth;

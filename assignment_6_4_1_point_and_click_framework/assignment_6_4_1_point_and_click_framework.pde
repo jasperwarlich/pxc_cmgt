@@ -32,13 +32,15 @@ void setup()
   Scene strandedIsland = new Scene("strandedIsland", "strandedisland.jpg");
   MoveToSceneObject toBay = new MoveToSceneObject("toBay", 1100, 400, 454/3, 286/3, "arrowRight.png", "bayScene");
   strandedIsland.addGameObject(toBay);
-  
+
   CollectableObject rope1 = new CollectableObject("rope1", 1150, 200, 50, 50, rope);
   strandedIsland.addGameObject(rope1);
-  
+
   MoveToSceneObject inTheSea = new MoveToSceneObject("seaScene", 50, 600, 100, 100, "arrowLeft2.png", "seaScene");
   RequireObject newWay = new RequireObject("requiresRope", 50, height/2, 100, 100, "quest.png", "Talk with the pirate and get the map", map, inTheSea);
   strandedIsland.addGameObject(newWay);
+  StoryBox dialogB = new StoryBox("dialog", 760, 120, 100, 100, "dialogBox.png", new String[]{"Where am I? Is that an island?", "I think I shipwrecked!", "I have to repair my ship and find a crew.", "Let's find some tools now!"});
+  strandedIsland.addGameObject(dialogB);
 
 
   //if(shipObj1.isUsed == true) {
@@ -52,7 +54,7 @@ void setup()
   bayScene.addGameObject(object3);
   CollectableObject hammer1 = new CollectableObject("hammer1", 300, 300, 100, 100, hammer);
   bayScene.addGameObject(hammer1);
-  
+
   MoveToSceneObject moveOn = new MoveToSceneObject("barScene", 1100, 400, 454/3, 286/3, "arrowRight.png", "barScene");
   RequireObject shipObj2 = new RequireObject("requiresRope", 700, 200, 100, 100, "quest.png", "You need to find a hammer!", hammer, moveOn);
   RequireObject shipObj1 = new RequireObject("requiresHammer", 700, 200, 100, 100, "quest.png", "You need to find a rope!", rope, shipObj2);
@@ -81,7 +83,7 @@ void setup()
   CollectableObject map1 = new CollectableObject("map", 1150, 200, 50, 50, map);
   bar.addGameObject(map1);
 
-  StoryBox pirate1 = new StoryBox("pirate", 650, 200, 500, 500, "pirate2.png", new String[]{"Hello sailor! I heard that you are looking for a treasure.", " I have the map for this treasure but you have to be careful.  \n This adventure is very dangerous and you will face a lot of difficulties before you reach the gold. \n But if you wanna die, who am I to stop you?", "Here, take the map and go!"});
+  StoryBox pirate1 = new StoryBox("pirate", 650, 200, 500, 500, "pirate2.png", new String[]{"Hello sailor! I heard that you are looking for a treasure.", " I have the map to this treasure, but you have to be careful. \n This adventure is very dangerous and you will face a lot of difficulties before you reach the gold. \n But if you wanna die, who am I to stop you?", "Here, take the map and go!"});
   bar.addGameObject(pirate1);
 
   //CollectableObject object6 = new CollectableObject("apple_scene03", 325, 366, 123, 101, apple);
