@@ -39,7 +39,7 @@ void setup()
   MoveToSceneObject inTheSea = new MoveToSceneObject("seaScene", 50, 600, 100, 100, "arrowLeft2.png", "seaScene");
   RequireObject newWay = new RequireObject("requiresRope", 50, height/2, 100, 100, "quest.png", "Talk with the pirate and get the map", map, inTheSea);
   strandedIsland.addGameObject(newWay);
-  StoryBox dialogB = new StoryBox("dialog", 760, 120, 100, 100, "dialogBox.png", new String[]{"Where am I? Is that an island?", "I think I shipwrecked!", "I have to repair my ship and find a crew.", "Let's find some tools now!"});
+  StoryBox dialogB = new StoryBox("dialog", 760, 120, 100, 100, "dialogBox.png", new String[]{"Where am I? Is that an island?", "I think we shipwrecked!", "We have to repair my ship.", "Let's find some tools!"});
   strandedIsland.addGameObject(dialogB);
 
 
@@ -83,7 +83,19 @@ void setup()
   CollectableObject map1 = new CollectableObject("map", 1150, 200, 50, 50, map);
   bar.addGameObject(map1);
 
-  StoryBox pirate1 = new StoryBox("pirate", 650, 200, 500, 500, "pirate2.png", new String[]{"Hello sailor! I heard that you are looking for a treasure.", " I have the map to this treasure, but you have to be careful. \n This adventure is very dangerous and you will face a lot of difficulties before you reach the gold. \n But if you wanna die, who am I to stop you?", "Here, take the map and go!"});
+  StoryBox pirate1 = new StoryBox("pirate", 650, 200, 500, 500, "pirate2.png", new String[]{
+
+    "Ahoy, traveller. What can I get ya.", //The bartender
+    "*You pass him some gold.*", //The player
+    "Beer, none of that watered down piss. I want the good stuff", //The player
+    "That’ll cost you some ,lad", //The bartender
+    "*You put down a few coins more*", //The player
+    "Here you go laddie, best beer in the house! Liquid gold, as we call it ‘ere", //The bartender
+    "Pfft… *Hick* liquid gold ain’t real gold old man, *hick* real gold ish out there.", //Drunk sailor
+    "And if you had some of that real gold you’d be drinkin’ better.", // The bartender
+    "*hick* I know where it ish *hick*", //Drunk sailor
+    "Don’t listen to this drunk fool, or it’ll get ya killed"}); // The bartender 
+    
   bar.addGameObject(pirate1);
 
   //CollectableObject object6 = new CollectableObject("apple_scene03", 325, 366, 123, 101, apple);
