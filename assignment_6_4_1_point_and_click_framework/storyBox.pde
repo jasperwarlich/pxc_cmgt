@@ -96,20 +96,20 @@ class StoryBox extends GameObject {
       fill(0);
       text("I don’t listen to the rumblings of a drunk fool.", 710, 700);
     }
-    switch(currentText) {
-    case 1:
-      textT[i] = "Yesh *hick* real fucking gold. I ish… I *hick* got a map. A map to the treashure *hick*";
-      answerOpen = false;
-      break;
-    case 2:
-      textT[i] = "I ish… know the seash, *hick* Shpend a long timesh in the dreaded waves.  But me ship went down you see *hick*. \n Eaten by the bloody sea. Goldsh shti0ll on it. *Hick* Tucked away in chest. But I remembersh… \n *Hick* I always remembersh… where the ship wen down you seesh";
-      answerOpen = false;
-      break;
-    case 3:
-      textT[i] = "Arrgh, but you better lishten. *Hick* I was once likesh you… Unlessh you wantsh to end up like me. *Hick";
-      answerOpen = false;
-      break;
-    }
+    //switch(currentText) {
+    //case 1:
+    //  textT[i] = "Yesh *hick* real fucking gold. I ish… I *hick* got a map. A map to the treashure *hick*";
+    //  answerOpen = false;
+    //  break;
+    //case 2:
+    //  textT[i] = "I ish… know the seash, *hick* Shpend a long timesh in the dreaded waves.  But me ship went down you see *hick*. \n Eaten by the bloody sea. Goldsh shti0ll on it. *Hick* Tucked away in chest. But I remembersh… \n *Hick* I always remembersh… where the ship wen down you seesh";
+    //  answerOpen = false;
+    //  break;
+    //case 3:
+    //  textT[i] = "Arrgh, but you better lishten. *Hick* I was once likesh you… Unlessh you wantsh to end up like me. *Hick";
+    //  answerOpen = false;
+    //  break;
+    //}
   }
 
   String getText(int i) {

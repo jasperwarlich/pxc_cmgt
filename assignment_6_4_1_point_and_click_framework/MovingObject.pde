@@ -2,13 +2,11 @@ class MovingObject extends GameObject {
 //MOVING OBJECTS TO A CERTAIN POINT (TAKES THE POSITION WHEN YOU CLICK SOMEWHERE)
   float x;
   String identifier;
-  float y;
-  float mousePosX;
-  float mousePosY;
+  int y;
   int owidth;
   int oheight;
-  float speed = .01f;
-  
+  float speed = 1;
+  PImage ship;
   public MovingObject(String identifier, int x, int y, int owidth, int oheight) {
     super(identifier, x, y, owidth, oheight);
     this.x = x;
@@ -16,15 +14,11 @@ class MovingObject extends GameObject {
     this.owidth = owidth;
     this.oheight = oheight;
   }
-  
   void draw() {
     fill(0);
-    x = lerp(x, mousePosX, speed);
-    y = lerp(y, mousePosY, speed);
-    if (mousePressed) {
-      mousePosX = mouseX;
-      mousePosY = mouseY;
-    }
-    rect(x, y, owidth, oheight);
+    ship = loadImage("ship.png");
+    translate (10* cos(millis()/500.0),10* sin(millis()/250.0));
+    image(ship, x, y, owidth, oheight);
+    x = x - 5f;
   }
 }
