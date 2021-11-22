@@ -73,7 +73,7 @@ class FirstDialog extends GameObject {
       }
     }
     
-    if(dialogShow == false) {
+    if(dialogShow == false && identifier != "dialog2") {
       fill(0);
       rect(855,25,400,100,28);
       fill(255);
