@@ -20,18 +20,26 @@ void setup()
   Collectable map = new Collectable("map", "map.png");
 
   // FIRST SCENE
-  Scene strandedIsland = new Scene("strandedIsland", "strandedisland.jpg");
+  Scene strandedIsland = new Scene("strandedIsland", "wrecked_ship.png");
   MoveToSceneObject toBay = new MoveToSceneObject("toBay", 1100, 400, 454/3, 286/3, "arrowRight.png", "bayScene");
+  // Opening dialog
+  FirstDialog dialog1 = new FirstDialog("dialog1", 0,0,0,0, new String[]{
+    "Crew members: \n \nThe captain is waking up! Thank god he is alright.",
+    "Crew members: \n \nIf it wasn’t for the captain, we all would have been lost to the wrath of the waves!", 
+    "Captain: \n \n*wakes up and grunts* Uuuhrgh... that hurt.",
+    "Captain: \n \n*looks back at the crew and ship* She took quite a beating... as did we all.",
+    "Captain: \n \nAye, listen up! We need to get her sailing again. Find the missing parts!",
+    "Crew members: \n \nAye, aye captain!"});
+    
+ 
   strandedIsland.addGameObject(toBay);
+  strandedIsland.addGameObject(dialog1);
+  
 
   CollectableObject rope1 = new CollectableObject("rope1", 1150, 200, 50, 50, rope);
   strandedIsland.addGameObject(rope1);
 
   MoveToSceneObject inTheSea = new MoveToSceneObject("seaScene", 50, 600, 100, 100, "arrowLeft2.png", "seaScene");
-  RequireObject newWay = new RequireObject("requiresRope", 50, height/2, 100, 100, "quest.png", "Talk with the pirate and get the map", map, inTheSea);
-  strandedIsland.addGameObject(newWay);
-  StoryBox dialogB = new StoryBox("dialog", 760, 120, 100, 100, "dialogBox.png", new String[]{"Where am I? Is that an island?", "I think we shipwrecked!", "We have to repair my ship.", "Let's find some tools!"});
-  strandedIsland.addGameObject(dialogB);
 
   // SECOND SCENE
   Scene bayScene = new Scene("bayScene", "piratecabin.jpg");
@@ -81,6 +89,7 @@ void setup()
 
 void draw()
 {
+  
   sceneManager.getCurrentScene().draw(wwidth, wheight);
   sceneManager.getCurrentScene().updateScene();
   inventoryManager.clearMarkedForDeathCollectables();
