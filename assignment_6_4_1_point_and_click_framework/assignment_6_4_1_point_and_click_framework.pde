@@ -34,12 +34,9 @@ void setup()
     "Captain: \n \nAye, listen up! We need to get her sailing again. Find the missing parts!", 
     "Crew members: \n \nAye, aye captain!"});
 
-
   strandedIsland.addGameObject(toBay);
   strandedIsland.addGameObject(dialog1);
 
-
-  
   CollectableObject frontPiece1 = new CollectableObject("frontPiece", 1050, 500, 100, 100, frontPiece);
   strandedIsland.addGameObject(frontPiece1);
   CollectableObject shipAsset1 = new CollectableObject("shipAsset", 850, 300, 250, 250, shipAsset);
@@ -66,16 +63,11 @@ void setup()
   bayScene.addGameObject(rope1);
   CollectableObject hammer1 = new CollectableObject("hammer1", 300, 300, 100, 100, hammer);
   bayScene.addGameObject(hammer1);
-  CollectableObject pirateFlag1 = new CollectableObject("pirateFlag", 400,400, 100, 100, pirateFlag);
+  CollectableObject pirateFlag1 = new CollectableObject("pirateFlag", 400, 400, 100, 100, pirateFlag);
   bayScene.addGameObject(pirateFlag1);
   MoveToSceneObject moveOn2 = new MoveToSceneObject("barScene", 1100, 400, 454/3, 286/3, "arrowRight.png", "barScene");
 
   bayScene.addGameObject(moveOn2);
-
-  ////THIRD SCENE
-  //Scene bayScene2 = new Scene("bayScene2", "piratecabin.jpg");
-  //MoveToSceneObject object4 = new MoveToSceneObject("repaired_ship", 50, 400, 100, 100, "arrowLeft2.png", "repaired_ship");
-  //bayScene2.addGameObject(object4);
 
   // FORTH SCENE
   Scene bar = new Scene("barScene", "bar.png");
@@ -96,7 +88,8 @@ void setup()
     "Don’t listen to this drunk fool, or it’ll get ya killed"}); // The bartender   
 
   bar.addGameObject(pirate1);
-
+  Player player = new Player("player", -500, 200, 400, 500, "character.png");
+  bar.addGameObject(player);
   // repaired_ship SCENE
   Scene sea = new Scene("repaired_ship", "repaired_ship.png");
   MoveToSceneObject sailing = new MoveToSceneObject("sailed_finished", 50, 500, 100, 80, "arrowLeft2.png", "sailed_finished");

@@ -5,7 +5,7 @@ class Scene {
 
   private ArrayList<GameObject> recentlyAddedGameObjects;
   private ArrayList<GameObject> markedForDeathGameObjects;
-
+  float i = 100f;
   public Scene(String sceneName, String backgroundImageFile) {
     this.sceneName = sceneName;
     this.backgroundImage = loadImage(backgroundImageFile);
@@ -43,7 +43,6 @@ class Scene {
       object.draw();
     }
   }
-
   public void mouseMoved() {
     for (GameObject object : gameObjects) {
       object.mouseMoved();

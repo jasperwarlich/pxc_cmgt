@@ -16,9 +16,6 @@ class FirstDialog extends GameObject {
 
   boolean dialogShow = true;
 
-  String[] asd;
-  int currentText = 0;
-
   float nextButtonX = 1169;
   float nextButtonY = 632;
   float nextButtonW = 80;
@@ -28,13 +25,6 @@ class FirstDialog extends GameObject {
   PImage gameObjectImageFile;
 
   String identifier;
-
-  //ANSWER 1
-  int bAnswerX = 700;
-  int bAnswerY = 600;
-  int bAnswerW = 400;
-  int bAnswerH = 30;
-  boolean answerOpen = true;
 
 
   public FirstDialog(String identifier, int x, int y, int owidth, int oheight, String[] text ) {
@@ -53,7 +43,6 @@ class FirstDialog extends GameObject {
       if (i == textT.length) {
         dialogShow = false;
         i = 0;
-        currentText = 0;
       } else {
         textSize(20);
         storyText = getText(i);
@@ -90,14 +79,6 @@ class FirstDialog extends GameObject {
   void mouseClicked() {
     if (mouseX >= nextButtonX && mouseX <= nextButtonX + nextButtonW && mouseY >= nextButtonY && mouseY <= nextButtonY + nextButtonH && (i < textT.length)) {
       i++;
-    }
-    if (mouseX >= bAnswerX && mouseX <= bAnswerX + bAnswerW && mouseY >= bAnswerY && mouseY <= bAnswerY + bAnswerH)
-    {
-      currentText = 1;
-    } if (mouseX >= bAnswerX && mouseX <= bAnswerX + bAnswerW && mouseY >= bAnswerY + 40 && mouseY <= bAnswerY + 40 + bAnswerH) {
-      currentText = 2;
-    }  if (mouseX >= bAnswerX && mouseX <= bAnswerX + bAnswerW && mouseY >= bAnswerY + 80 && mouseY <= bAnswerY + 80 + bAnswerH) {
-      currentText = 3;
     }
   }
 
