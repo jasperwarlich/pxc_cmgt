@@ -20,11 +20,10 @@ class MovingObject extends GameObject {
     image(gameObjectImageFile, x, y, owidth, oheight);
     x += speed;
     //y += speedY;
-    println(speedY);
+   
     if(x > 7 || x < 0){
      speed *= -1f;
     }
-   
-    println(y);
+
   }
 }

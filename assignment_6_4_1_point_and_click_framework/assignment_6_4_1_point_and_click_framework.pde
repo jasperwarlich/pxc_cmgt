@@ -1,3 +1,5 @@
+import processing.sound.*;
+
 int wwidth = 1280;
 int wheight = 720;
 
@@ -8,6 +10,8 @@ boolean mouseWentDown = false;
 
 PImage birds;
 
+SoundFile background;
+
 void settings()
 {
   size(wwidth, wheight);
@@ -15,6 +19,8 @@ void settings()
 
 void setup()
 {
+  background = new SoundFile(this, "background.wav");
+  background.loop();
   frameRate(60);
   Collectable rope = new Collectable("rope", "rope.png");
   Collectable hammer = new Collectable("hammer", "hammer.png");
@@ -130,7 +136,7 @@ void setup()
 
 void draw()
 {
-
+  //background.loop();
   sceneManager.getCurrentScene().draw(wwidth, wheight);
   sceneManager.getCurrentScene().updateScene();
   inventoryManager.clearMarkedForDeathCollectables();
