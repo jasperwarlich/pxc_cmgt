@@ -55,4 +55,6 @@ class InventoryManager {
       x += 100;
     }
   }
+  
+  
 }

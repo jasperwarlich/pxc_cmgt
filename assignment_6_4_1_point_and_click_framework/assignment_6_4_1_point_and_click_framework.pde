@@ -14,9 +14,10 @@ void settings()
 void setup()
 {
   frameRate(60);
-  Collectable rope = new Collectable("rope", "rope.png");
+  Collectable wood = new Collectable("wood", "wood_piece.png");
   Collectable hammer = new Collectable("hammer", "hammer.png");
-
+  ArrayList<Collectable> shipRepair = new ArrayList<Collectable>();
+  shipRepair.add(wood);
   Collectable map = new Collectable("map", "map.png");
 
   // FIRST SCENE
@@ -31,15 +32,16 @@ void setup()
     "Captain: \n \nAye, listen up! We need to get her sailing again. Find the missing parts!",
     "Crew members: \n \nAye, aye captain!"});
     
- 
   strandedIsland.addGameObject(toBay);
   strandedIsland.addGameObject(dialog1);
   
 
-  CollectableObject rope1 = new CollectableObject("rope1", 1150, 200, 50, 50, rope);
-  strandedIsland.addGameObject(rope1);
-
+  CollectableObject wood1 = new CollectableObject("wood", 1150, 200, 100, 100, wood);
+  strandedIsland.addGameObject(wood1);
   MoveToSceneObject inTheSea = new MoveToSceneObject("seaScene", 50, 600, 100, 100, "arrowLeft2.png", "seaScene");
+  RequireObject requiresWood = new RequireObject("requiresWood", 565,417,127,103,"blank.png", "You need to find some wood", wood, inTheSea);
+  strandedIsland.addGameObject(requiresWood);
+ requiresWood.used();
 
   // SECOND SCENE
   Scene bayScene = new Scene("bayScene", "piratecabin.jpg");
@@ -50,8 +52,6 @@ void setup()
 
   MoveToSceneObject moveOn = new MoveToSceneObject("barScene", 1100, 400, 454/3, 286/3, "arrowRight.png", "barScene");
   RequireObject shipObj2 = new RequireObject("requiresRope", 700, 200, 100, 100, "quest.png", "You need to find a hammer!", hammer, moveOn);
-  RequireObject shipObj1 = new RequireObject("requiresHammer", 700, 200, 100, 100, "quest.png", "You need to find a rope!", rope, shipObj2);
-  bayScene.addGameObject(shipObj1);
 
   // THIRD SCENE
   Scene bar = new Scene("barScene", "bar.png");
@@ -89,6 +89,7 @@ void setup()
 
 void draw()
 {
+  
   
   sceneManager.getCurrentScene().draw(wwidth, wheight);
   sceneManager.getCurrentScene().updateScene();
