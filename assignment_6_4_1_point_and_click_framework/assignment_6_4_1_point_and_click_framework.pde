@@ -6,6 +6,8 @@ final InventoryManager inventoryManager = new InventoryManager();
 
 boolean mouseWentDown = false;
 
+PImage birds;
+
 void settings()
 {
   size(wwidth, wheight);
@@ -25,6 +27,8 @@ void setup()
   // FIRST SCENE
   Scene strandedIsland = new Scene("strandedIsland", "wrecked_ship.png");
   MoveToSceneObject toBay = new MoveToSceneObject("toBay", 1100, 400, 454/3, 286/3, "arrowRight.png", "bayScene");
+  MovingObject birds = new MovingObject("birds", 1, -150, 600, 600, "birds.png");
+  strandedIsland.addGameObject(birds);
   // Opening dialog
   FirstDialog dialog1 = new FirstDialog("dialog1", 0, 0, 0, 0, new String[]{
     "Crew members: \n \nThe captain is waking up! Thank god he is alright.", 
@@ -54,7 +58,6 @@ void setup()
   RequireObject shipObj6 = new RequireObject("requiresMap", 700, 200, 100, 100, "quest.png", "You need to find a map!", map, shipObj5);
   RequireObject shipObj7 = new RequireObject("requiresWoodPiece", 700, 200, 100, 100, "quest.png", "You need to find a wood piece!", woodPiece, shipObj6);
   strandedIsland.addGameObject(shipObj7);
-
   // SECOND SCENE
   Scene bayScene = new Scene("bayScene", "piratecabin.jpg");
   MoveToSceneObject object3 = new MoveToSceneObject("strandedIsland", 50, 400, 100, 100, "arrowLeft2.png", "strandedIsland");
@@ -70,12 +73,14 @@ void setup()
   bayScene.addGameObject(moveOn2);
 
   // FORTH SCENE
-  Scene bar = new Scene("barScene", "bar.png");
+  Scene bar = new Scene("barScene", "bar_scene.png");
   MoveToSceneObject goB = new MoveToSceneObject("bayScene", 50, 500, 100, 80, "arrowLeft2.png", "bayScene");
   bar.addGameObject(goB);
   CollectableObject map1 = new CollectableObject("map", 1150, 200, 50, 50, map);
   bar.addGameObject(map1);
-  StoryBox pirate1 = new StoryBox("pirate", 650, 200, 500, 500, "pirate2.png", new String[]{
+  Player player = new Player("player", -500, 200, 400, 500, "character.png");
+  bar.addGameObject(player);
+  StoryBox pirate1 = new StoryBox("pirate", 650, 200, 500, 500, "pirate.png", new String[]{
     "Ahoy, traveller. What can I get ya.", //The bartender
     "*You pass him some gold.*", //The player
     "Beer, none of that watered down piss. I want the good stuff", //The player
@@ -88,17 +93,20 @@ void setup()
     "Don’t listen to this drunk fool, or it’ll get ya killed"}); // The bartender   
 
   bar.addGameObject(pirate1);
-  Player player = new Player("player", -500, 200, 400, 500, "character.png");
-  bar.addGameObject(player);
+  
   // repaired_ship SCENE
   Scene sea = new Scene("repaired_ship", "repaired_ship.png");
   MoveToSceneObject sailing = new MoveToSceneObject("sailed_finished", 50, 500, 100, 80, "arrowLeft2.png", "sailed_finished");
   sea.addGameObject(sailing);
-
+  MovingObject birds3 = new MovingObject("birds", 0, -100, 600, 600, "birds.png");
+  sea.addGameObject(birds3);
+  
   //SAILING SCENE
   Scene sailingScene = new Scene ("sailed_finished", "sailed_finished.png");
   MoveToSceneObject treasureAdv = new MoveToSceneObject("sailed_finished", 50, 600, 100, 80, "arrowLeft2.png", "sailed_finished");
   sailingScene.addGameObject(treasureAdv);
+  MovingObject birds2 = new MovingObject("birds", 0, -100, 600, 600, "birds.png");
+  sailingScene.addGameObject(birds2);
   FirstDialog dialog2 = new FirstDialog("dialog2", 0, 0, 0, 0, new String[]{
     "Crew members: \n \nThe captain is waking up! Thank god he is alright.", 
     "Crew members: \n \nIf it wasn’t for the captain, we all would have been lost to the wrath of the waves!", 

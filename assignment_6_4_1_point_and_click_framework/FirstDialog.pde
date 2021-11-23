@@ -68,6 +68,7 @@ class FirstDialog extends GameObject {
       fill(255);
       textSize(32);
       text("Find the missing parts", 870, 80);
+      textSize(16);
     }
 
   }
