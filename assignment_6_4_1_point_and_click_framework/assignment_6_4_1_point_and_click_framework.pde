@@ -23,7 +23,7 @@ void setup()
 {
   Scene strandedIsland = new Scene("strandedIsland", "wrecked_ship.png");
   background = new SoundFile(this, "background.wav");
-  // background.loop();
+  background.loop();
   frameRate(60);
   Collectable rope = new Collectable("rope", "rope.png");
   Collectable hammer = new Collectable("hammer", "hammer.png");
