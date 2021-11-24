@@ -104,8 +104,7 @@ class FirstDialog extends GameObject {
       dontShowObjs = false;
       
       if(sceneManager.getCurrentScene().getSceneName() == "night") {
-    
-      
+
       try {
           sceneManager.goToScene("strandedIsland");
         } 
@@ -113,7 +112,7 @@ class FirstDialog extends GameObject {
           println(e.getMessage());
         }
       }
-        
+             
        if(sceneManager.getCurrentScene().getSceneName() == "strandedIsland") {
       fill(0);
       rect(1100,25,150,300,28);
@@ -204,4 +203,4 @@ class FirstDialog extends GameObject {
     textSize(16);
     text("NEXT!", 1192, 660);
   }
-}
+} 

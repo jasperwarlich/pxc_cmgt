@@ -7,6 +7,7 @@ class Scene {
   private ArrayList<GameObject> markedForDeathGameObjects;
   private ArrayList<ReplaceImage> images;
   float i = 100f;
+  int timer = 0;
   public Scene(String sceneName, String backgroundImageFile) {
     this.sceneName = sceneName;
     this.backgroundImage = loadImage(backgroundImageFile);
@@ -18,7 +19,7 @@ class Scene {
   public void addGameObject(GameObject object) {
     recentlyAddedGameObjects.add(object);
   }
-  
+
   public void addImage(ReplaceImage image) {
     images.add(image);
   }

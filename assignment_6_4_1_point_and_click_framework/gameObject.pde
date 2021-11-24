@@ -42,15 +42,7 @@ class GameObject {
         image(gameObjectImage, x, y, owidth, oheight);
       }
     }
-    //if(identifier == "pirate" && mouseIsHovering && mousePressed){
-    //println("sdsadas");
-    //}
-    //if(mouseIsHovering) {
-    //  cursor(HAND);
-    //} else {
-    //  cursor(ARROW);
-    //}
-    
+  
   //  if(mouseIsHovering) {
   //    cursor(HAND);
   //    hand = true;
@@ -64,52 +56,52 @@ class GameObject {
   //  cursor(ARROW);
 
   //}
+}
+
+
+
+//  if (mouseIsHovering) {
+//    rectMode(CORNER);
+//    fill(0);
+//    rect(mouseX, mouseY, 85, 50, 20);
+//    fill(255);
+//    text("Go further!", mouseX + 10, mouseY +23);
+//    cursor(HAND);
+//  } else if(!mouseIsHovering) {
+//    cursor(ARROW);
+//  }
+//}
+
+public void mouseMoved() {
+  mouseIsHovering = false;
+  if (mouseX >= x && mouseX <= x + owidth &&
+    mouseY >= y && mouseY <= y + oheight) {
+    mouseIsHovering = true;
   }
-  
- 
+}
 
-  //  if (mouseIsHovering) {
-  //    rectMode(CORNER);
-  //    fill(0);
-  //    rect(mouseX, mouseY, 85, 50, 20);
-  //    fill(255);
-  //    text("Go further!", mouseX + 10, mouseY +23);
-  //    cursor(HAND);
-  //  } else if(!mouseIsHovering) {
-  //    cursor(ARROW);
-  //  }
-  //}
+public void mouseClicked() {
+}
 
-  public void mouseMoved() {
-    mouseIsHovering = false;
-    if (mouseX >= x && mouseX <= x + owidth &&
-      mouseY >= y && mouseY <= y + oheight) {
-      mouseIsHovering = true;
-    }
-  }
+public String getIdentifier() {
+  return this.identifier;
+}
 
-  public void mouseClicked() {
-  }
-
-  public String getIdentifier() {
-    return this.identifier;
-  }
-
-  @Override 
-    public boolean equals(Object obj) { 
-    if (obj == this) { 
-      return true;
-    } 
-    if (obj == null || obj.getClass() != this.getClass()) { 
-      return false;
-    } 
-    GameObject otherGameObject = (GameObject) obj; 
-    return otherGameObject.getIdentifier().equals(this.identifier);
+@Override 
+  public boolean equals(Object obj) { 
+  if (obj == this) { 
+    return true;
   } 
+  if (obj == null || obj.getClass() != this.getClass()) { 
+    return false;
+  } 
+  GameObject otherGameObject = (GameObject) obj; 
+  return otherGameObject.getIdentifier().equals(this.identifier);
+} 
 
-  @Override 
-    public int hashCode() { 
-    final int prime = 11;
-    return prime * this.identifier.hashCode();
-  }
+@Override 
+  public int hashCode() { 
+  final int prime = 11;
+  return prime * this.identifier.hashCode();
+}
 }

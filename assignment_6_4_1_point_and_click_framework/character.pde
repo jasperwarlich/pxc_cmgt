@@ -17,7 +17,6 @@ class Player extends GameObject {
   }
   void draw() {
     image(gameObjectImageFile, x, y, owidth, oheight);
-      println(x);
 
     if (x<= 100f)
     {
