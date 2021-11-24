@@ -27,7 +27,6 @@ class InventoryManager {
       markedForDeathCollectables  = new ArrayList<Collectable>();
     }
   }
-
   // Draws all the items collected at slot position
   public void drawCollectables() {
     int x = 20;
@@ -48,13 +47,11 @@ class InventoryManager {
     //  rect(x, 0, 80, 80);
     //  x += 80;
     //}
-    for(Collectable c : collectables) {
-       stroke(255);
+    for (Collectable c : collectables) {
+      stroke(255);
       fill(0, 55);
       rect(x, 0, 100, 100);
       x += 100;
     }
   }
-  
-  
 }

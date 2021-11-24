@@ -47,8 +47,8 @@ void setup()
   MovingObject birds = new MovingObject("birds", 1, -150, 600, 600, "birds.png");
 
   // Opening dialog
-  Scene night = new Scene("night", "wrecked_ship_night.png");
-
+  Scene night = new Scene("night", "wakingup_scene.png");
+  
   // Ship Repaired
   Scene repairedShip = new Scene("repairedShip", "repaired_ship.png");
   MoveToSceneObject sail = new MoveToSceneObject("sailing_cutscene", 50, 400, 454/3, 286/3, "arrowLeft2.png", "sailing_cutscene");
@@ -62,7 +62,6 @@ void setup()
 
 
   CollectableObject woodPiece1 = new CollectableObject("woodPiece", 800, 500, 100, 100, woodPiece);
-
 
   GameObject woodImg = new GameObject("wood", 568, 412, 127, 103, "wood_piece.png");
   GameObject pirateFlagImg = new GameObject("pirateFlag", 330, -32, 153, 105, "pirate_flag.png");
@@ -150,7 +149,7 @@ void setup()
   Scene treasureScene = new Scene ("treasure_scene", "treasure_scene.png");
   CollectableObject keyT = new CollectableObject("treasureKey", 800, 500, 100, 100, treasureKey);
   treasureScene.addGameObject(keyT);
-  CollectableObject rumB = new CollectableObject("rum", 800, 500, 100, 100, rum);
+  CollectableObject rumB = new CollectableObject("rum", 798, 250, 100, 100, rum);
   //StoryBox rum = new StoryBox("rum", 798, 250, 100, 100, "rum.png", new String[]{
   //"Congratulations guys!! We just found the best rum in the world!", "Let's get drunk, we deserve it!", "Aye, aye captain!"});
   RequireObject treasureDetect = new RequireObject("requiresKey", 798, 263, 91, 53, "blank.png", "You need a key!", treasureKey, rumB);
