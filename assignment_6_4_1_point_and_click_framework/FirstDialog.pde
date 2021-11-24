@@ -16,9 +16,6 @@ class FirstDialog extends GameObject {
 
   boolean dialogShow = true;
 
-  String[] asd;
-  int currentText = 0;
-
   float nextButtonX = 1169;
   float nextButtonY = 632;
   float nextButtonW = 80;
@@ -26,18 +23,37 @@ class FirstDialog extends GameObject {
   String storyText;
   public String[] textT;
   PImage gameObjectImageFile;
-
+  ArrayList<RequireObject> item;
   String identifier;
-
-  //ANSWER 1
-  int bAnswerX = 700;
-  int bAnswerY = 600;
-  int bAnswerW = 400;
-  int bAnswerH = 30;
-  boolean answerOpen = true;
+  PImage notFound = loadImage("redcross.png");
+  PImage found = loadImage("check.png");
+  boolean dontShowObjs = true;
+  
+  boolean isObjective;
 
 
-  public FirstDialog(String identifier, int x, int y, int owidth, int oheight, String[] text ) {
+  //public FirstDialog(String identifier, int x, int y, int owidth, int oheight, String[] text, ArrayList<RequireObject> item ) {
+  //  super(identifier, x, y, owidth, oheight);
+  //  this.identifier = identifier;
+  //  this.x = x;
+  //  this.y = y;
+  //  this.owidth = owidth;
+  //  this.oheight = oheight;
+  //  this.textT = text;
+  //  this.item = item;
+  //}
+  
+    public FirstDialog(String identifier, int x, int y, int owidth, int oheight, String[] text, ArrayList<RequireObject> item) {
+    super(identifier, x, y, owidth, oheight);
+    this.identifier = identifier;
+    this.x = x;
+    this.y = y;
+    this.owidth = owidth;
+    this.oheight = oheight;
+    this.textT = text;
+    this.item = item;
+  }
+   public FirstDialog(String identifier, int x, int y, int owidth, int oheight, String[] text) {
     super(identifier, x, y, owidth, oheight);
     this.identifier = identifier;
     this.x = x;
@@ -46,14 +62,25 @@ class FirstDialog extends GameObject {
     this.oheight = oheight;
     this.textT = text;
   }
+  
+   public FirstDialog(String identifier, int x, int y, int owidth, int oheight, String[] text, ArrayList<RequireObject> item, boolean objective) {
+    super(identifier, x, y, owidth, oheight);
+    this.identifier = identifier;
+    this.x = x;
+    this.y = y;
+    this.owidth = owidth;
+    this.oheight = oheight;
+    this.textT = text;
+    this.item = item;
+    this.isObjective = objective;
+  }
 
   void draw() {
-
+    noStroke();
     if (dialogShow == true) {
       if (i == textT.length) {
         dialogShow = false;
         i = 0;
-        currentText = 0;
       } else {
         textSize(20);
         storyText = getText(i);
@@ -73,13 +100,89 @@ class FirstDialog extends GameObject {
       }
     }
     
-    if(dialogShow == false) {
+    if(dialogShow == false && identifier == "dialog1" || isObjective) {
+      dontShowObjs = false;
+      
+      if(sceneManager.getCurrentScene().getSceneName() == "night") {
+      try {
+          sceneManager.goToScene("strandedIsland");
+        } 
+        catch(Exception e) { 
+          println(e.getMessage());
+        }
+      }
+        
+       if(sceneManager.getCurrentScene().getSceneName() == "strandedIsland") {
       fill(0);
-      rect(855,25,400,100,28);
+      rect(1100,25,150,300,28);
       fill(255);
-      textSize(32);
-      text("Find the missing parts", 870, 80);
+      textSize(14);
+      text("Find the missing \nparts and interact \non the ship", 1110, 55);
+        
+      
+      if(item.get(0).isUsed == false) {
+        image(notFound,1110,110,25,25);
+        text("Front Piece", 1150, 125);
+      } else if(item.get(0).isUsed == true) {
+        image(found,1110,110,25,25);
+        text("Front Piece", 1150, 125);
+      }
+      
+      if(item.get(1).isUsed == false) {
+        image(notFound,1110,145,25,25);
+        text("Main Mast", 1150, 160);
+      } else if(item.get(1).isUsed == true) {
+        image(found,1110,145,25,25);
+        text("Main Mast", 1150, 160);
+      }
+      
+      if(item.get(2).isUsed == false) {
+        image(notFound,1110,180,25,25);
+        text("Pirate Flag", 1150, 195);
+      } else if(item.get(2).isUsed == true) {
+        image(found,1110,180,25,25);
+        text("Pirate Flag", 1150, 195);
+      }
+      
+      if(item.get(3).isUsed == false) {
+        image(notFound,1110,215,25,25);
+        text("Wood Piece", 1150, 230);
+        
+      } else if(item.get(3).isUsed == true) {
+        image(found,1110,215,25,25);
+        text("Wood Piece", 1150, 230);
+      }
+       } 
+        
+        
+       if(item.get(0).isUsed == true && item.get(1).isUsed == true && item.get(2).isUsed == true && item.get(3).isUsed == true) {
+      try {
+          sceneManager.goToScene("repairedShip");
+          item.get(0).isUsed = false;
+          item.get(1).isUsed = false;
+          item.get(2).isUsed = false;
+          item.get(3).isUsed = false;
+        } 
+        catch(Exception e) { 
+          println(e.getMessage());
+        }
+       }
+       
+       if(sceneManager.getCurrentScene().getSceneName() == "repairedShip") {
+          fill(0);
+      rect(900,25,300,100,28);
+      fill(255);
+      textSize(14);
+      text("Go to the bar and talk to the bartender", 910, 80);
+       }
+      
+      
     }
+    
+    
+   
+    
+    
 
   }
 
@@ -90,14 +193,6 @@ class FirstDialog extends GameObject {
   void mouseClicked() {
     if (mouseX >= nextButtonX && mouseX <= nextButtonX + nextButtonW && mouseY >= nextButtonY && mouseY <= nextButtonY + nextButtonH && (i < textT.length)) {
       i++;
-    }
-    if (mouseX >= bAnswerX && mouseX <= bAnswerX + bAnswerW && mouseY >= bAnswerY && mouseY <= bAnswerY + bAnswerH)
-    {
-      currentText = 1;
-    } if (mouseX >= bAnswerX && mouseX <= bAnswerX + bAnswerW && mouseY >= bAnswerY + 40 && mouseY <= bAnswerY + 40 + bAnswerH) {
-      currentText = 2;
-    }  if (mouseX >= bAnswerX && mouseX <= bAnswerX + bAnswerW && mouseY >= bAnswerY + 80 && mouseY <= bAnswerY + 80 + bAnswerH) {
-      currentText = 3;
     }
   }
 

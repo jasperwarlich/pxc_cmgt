@@ -1,14 +1,13 @@
-class MovingObject extends GameObject {
-//MOVING OBJECTS TO A CERTAIN POINT (TAKES THE POSITION WHEN YOU CLICK SOMEWHERE)
+class Player extends GameObject {
+
   float x;
   String identifier;
   int y;
   int owidth;
   int oheight;
-  float speed = .2;
-  float speedY = .2;
+  float speed = 8;
   PImage gameObjectImageFile;
-  public MovingObject(String identifier, int x, int y, int owidth, int oheight, String gameObjectImageFile) {
+  public Player(String identifier, int x, int y, int owidth, int oheight, String gameObjectImageFile) {
     super(identifier, x, y, owidth, oheight);
     this.x = x;
     this.y = y;
@@ -18,12 +17,12 @@ class MovingObject extends GameObject {
   }
   void draw() {
     image(gameObjectImageFile, x, y, owidth, oheight);
-    x += speed;
-    //y += speedY;
-   
-    if(x > 7 || x < 0){
-     speed *= -1f;
-    }
+      println(x);
 
+    if (x<= 100f)
+    {
+      speed *= .99f;
+      x+= speed;    
+    }
   }
 }

@@ -55,7 +55,6 @@ class StoryBox extends GameObject {
     {
       dialogShow = true;
     }
-
     if (dialogShow == true) {
       if (i == textT.length) {
         dialogShow = false;
@@ -79,37 +78,7 @@ class StoryBox extends GameObject {
         }
       }
     }
-    if (i >= textT.length - 1 && answerOpen)
-    {
-      fill(255);
-      rect(bAnswerX, bAnswerY, bAnswerW, bAnswerH, 45);
-      fill(0);
-      text("No please, continue gold you said?", 710, 620);  
-
-      fill(255);
-      rect(bAnswerX, bAnswerY + 40, bAnswerW, bAnswerH, 45);
-      fill(0);
-      text("What do you know about, out there on the sea?", 710, 660); 
-
-      fill(255);
-      rect(bAnswerX, bAnswerY + 80, bAnswerW, bAnswerH, 45);
-      fill(0);
-      text("I don’t listen to the rumblings of a drunk fool.", 710, 700);
-    }
-    //switch(currentText) {
-    //case 1:
-    //  textT[i] = "Yesh *hick* real fucking gold. I ish… I *hick* got a map. A map to the treashure *hick*";
-    //  answerOpen = false;
-    //  break;
-    //case 2:
-    //  textT[i] = "I ish… know the seash, *hick* Shpend a long timesh in the dreaded waves.  But me ship went down you see *hick*. \n Eaten by the bloody sea. Goldsh shti0ll on it. *Hick* Tucked away in chest. But I remembersh… \n *Hick* I always remembersh… where the ship wen down you seesh";
-    //  answerOpen = false;
-    //  break;
-    //case 3:
-    //  textT[i] = "Arrgh, but you better lishten. *Hick* I was once likesh you… Unlessh you wantsh to end up like me. *Hick";
-    //  answerOpen = false;
-    //  break;
-    //}
+    
   }
 
   String getText(int i) {
@@ -119,14 +88,6 @@ class StoryBox extends GameObject {
   void mouseClicked() {
     if (mouseX >= nextButtonX && mouseX <= nextButtonX + nextButtonW && mouseY >= nextButtonY && mouseY <= nextButtonY + nextButtonH && (i < textT.length)) {
       i++;
-    }
-    if (mouseX >= bAnswerX && mouseX <= bAnswerX + bAnswerW && mouseY >= bAnswerY && mouseY <= bAnswerY + bAnswerH)
-    {
-      currentText = 1;
-    } if (mouseX >= bAnswerX && mouseX <= bAnswerX + bAnswerW && mouseY >= bAnswerY + 40 && mouseY <= bAnswerY + 40 + bAnswerH) {
-      currentText = 2;
-    }  if (mouseX >= bAnswerX && mouseX <= bAnswerX + bAnswerW && mouseY >= bAnswerY + 80 && mouseY <= bAnswerY + 80 + bAnswerH) {
-      currentText = 3;
     }
   }
 

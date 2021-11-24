@@ -5,7 +5,8 @@ class Scene {
 
   private ArrayList<GameObject> recentlyAddedGameObjects;
   private ArrayList<GameObject> markedForDeathGameObjects;
-
+  private ArrayList<ReplaceImage> images;
+  float i = 100f;
   public Scene(String sceneName, String backgroundImageFile) {
     this.sceneName = sceneName;
     this.backgroundImage = loadImage(backgroundImageFile);
@@ -16,6 +17,10 @@ class Scene {
 
   public void addGameObject(GameObject object) {
     recentlyAddedGameObjects.add(object);
+  }
+  
+  public void addImage(ReplaceImage image) {
+    images.add(image);
   }
 
   public void removeGameObject(GameObject object) {
@@ -43,7 +48,6 @@ class Scene {
       object.draw();
     }
   }
-
   public void mouseMoved() {
     for (GameObject object : gameObjects) {
       object.mouseMoved();
