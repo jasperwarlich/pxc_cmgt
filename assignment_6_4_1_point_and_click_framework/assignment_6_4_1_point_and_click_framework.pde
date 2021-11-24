@@ -79,11 +79,11 @@ void setup()
   GameObject shipAssetImg = new GameObject("shipAsset", 325, 38, 261, 123, "ship_asset.png");
   
   MoveToSceneObject moveOn = new MoveToSceneObject("repaired_ship", 50, 400, 454/3, 286/2, "check.png", "repaired_ship");
-  RequireObject shipObj3 = new RequireObject("requiresFrontPiece", 763, 195, 175, 164, "blank.png", "You need to find a front piece!", frontPiece, frontPieceImg);
-  RequireObject shipObj4 = new RequireObject("requiresShipAsset", 325, 38, 261, 123, "blank.png", "You need to find a ship asset!", shipAsset, shipAssetImg);
-  RequireObject shipObj5 = new RequireObject("requiresPirateFlag", 700, 200, 100, 100, "redcross.png", "You need to find a pirate flag!", pirateFlag, pirateFlagImg);
+  RequireObject shipObj3 = new RequireObject("requiresFrontPiece", 763, 195, 175, 164, "frontpiece_sil.png", "You need to find a front piece!", frontPiece, frontPieceImg);
+  RequireObject shipObj4 = new RequireObject("requiresShipAsset", 325, 38, 261, 123, "ship_asset_sil.png", "You need to find a ship asset!", shipAsset, shipAssetImg);
+  RequireObject shipObj5 = new RequireObject("requiresPirateFlag", 330, -32, 153, 105, "pirate_flag_sil.png", "You need to find a pirate flag!", pirateFlag, pirateFlagImg);
  // RequireObject shipObj6 = new RequireObject("requiresMap", 700, 200, 100, 100, "quest.png", "You need to find a map!", map, shipObj5);
-  RequireObject shipObj7 = new RequireObject("requiresWoodPiece", 568, 412, 127, 103, "blank.png", "Hmm.. I probabably need wood to fill this hole.", woodPiece, woodImg);
+  RequireObject shipObj7 = new RequireObject("requiresWoodPiece", 568,412,127,103, "wood_piece_sil.png", "Hmm.. I probabably need wood to fill this hole.", woodPiece, woodImg);
  
   
   
