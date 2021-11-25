@@ -6,6 +6,8 @@ Movie movie;
 int wwidth = 1280;
 int wheight = 720;
 
+public PApplet p = this;
+
 final SceneManager sceneManager = new SceneManager();
 final InventoryManager inventoryManager = new InventoryManager();
 
@@ -31,6 +33,7 @@ void settings()
 void setup()
 {
  
+
   
 
   PApplet p = this;
@@ -46,7 +49,7 @@ void setup()
   last = new Movie(this, "treasureCutscene.mp4");
   Scene strandedIsland = new Scene("strandedIsland", "wrecked_ship.png");
   background = new SoundFile(this, "background.wav");
-  //background.loop();
+  background.loop();
   frameRate(60);
   Collectable rope;
   rope  = new Collectable("rope", "rope.png");
