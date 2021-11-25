@@ -1,3 +1,4 @@
+import processing.sound.*;
 class Player extends GameObject {
 
   float x;
@@ -7,6 +8,7 @@ class Player extends GameObject {
   int oheight;
   float speed = 8;
   PImage gameObjectImageFile;
+  
   public Player(String identifier, int x, int y, int owidth, int oheight, String gameObjectImageFile) {
     super(identifier, x, y, owidth, oheight);
     this.x = x;
@@ -22,6 +24,7 @@ class Player extends GameObject {
     {
       speed *= .99f;
       x+= speed;    
+      
     }
   }
 }

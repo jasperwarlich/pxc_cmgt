@@ -1,5 +1,5 @@
 boolean playMusic = false;
-
+boolean hasTheKey = false;
 class InventoryManager {
   private ArrayList<Collectable> collectables;
   private ArrayList<Collectable> markedForDeathCollectables;
@@ -38,6 +38,12 @@ class InventoryManager {
       gameObjectImage = loadImage(c.getGameObjectImageFile());
       image(gameObjectImage, x+10, 30, 40, 40);
       x += 100;
+      if (c.getName().equals("key")) {
+        hasTheKey = true;
+      }else
+      {
+      hasTheKey = false;
+      }
     }
   }
 

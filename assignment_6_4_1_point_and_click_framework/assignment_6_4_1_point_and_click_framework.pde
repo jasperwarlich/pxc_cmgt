@@ -2,7 +2,6 @@ import processing.sound.*;
 import processing.video.*;
 Movie movie;
 
-
 int wwidth = 1280;
 int wheight = 720;
 
@@ -20,8 +19,6 @@ SoundFile pickUp;
 
 Movie last;
 
-
-
 void settings()
 {
   size(wwidth, wheight);
@@ -29,23 +26,23 @@ void settings()
 
 void setup()
 {
-  PApplet p = this;
   Collectable rum = new Collectable("rum", "rum.png");
   CollectableObject rumB = new CollectableObject("rum", 798, 250, 100, 100, rum);
   Collectable treasureKey = new Collectable("key", "key.png");
   RequireObject treasureDetect = new RequireObject("requiresKey", 798, 263, 91, 53, "blank.png", "You need a key!", treasureKey, rumB);
-  movie = new Movie(this, "treasureCutscene.mp4");
+  //movie = new Movie(this, "treasureCutscene.mp4");
   //movie.loop();
   pickUp = new SoundFile(this, "PickUpItem.wav");
-  
-  last = new Movie(this, "treasureCutscene.mp4");
+
+ // last = new Movie(this, "treasureCutscene.mp4");
   Scene strandedIsland = new Scene("strandedIsland", "wrecked_ship.png");
+  
   background = new SoundFile(this, "background.wav");
-  background.loop();
+  //background.loop();
   frameRate(60);
-  Collectable rope;
-  rope  = new Collectable("rope", "rope.png");
-  Collectable hammer = new Collectable("hammer", "hammer.png");
+  //Collectable rope;
+  //rope  = new Collectable("rope", "rope.png");
+  //Collectable hammer = new Collectable("hammer", "hammer.png");
   ArrayList<Collectable> shipRepair = new ArrayList<Collectable>();
 
   Collectable frontPiece = new Collectable("frontPiece", "frontpiece.png");
@@ -54,14 +51,15 @@ void setup()
   Collectable woodPiece = new Collectable("woodPiece", "wood_piece.png");
   Collectable map = new Collectable("map", "map.png");
 
-
+  CollectableObject pirateFlag1 = new CollectableObject("pirateFlag", 100, 450, 100, 100, pirateFlag);
+  strandedIsland.addGameObject(pirateFlag1);
   // START
   Scene start = new Scene("start", "titlescreen.png");
   MoveToSceneObject play = new MoveToSceneObject("toStart", 458, 400, 400, 150, "blank.png", "night");
   start.addGameObject(play);
 
   // FIRST SCENE
-  MoveToSceneObject toBay = new MoveToSceneObject("toBay", 1100, 600, 454/3, 286/3, "arrowRight.png", "bayScene");
+  //MoveToSceneObject toBay = new MoveToSceneObject("toBay", 1100, 600, 454/3, 286/3, "arrowRight.png", "bayScene");
 
   MovingObject birds = new MovingObject("birds", 1, -150, 600, 600, "birds.png");
 
@@ -76,11 +74,11 @@ void setup()
   MoveToSceneObject moveToBar = new MoveToSceneObject("barScene", 1100, 600, 454/3, 286/3, "arrowRight.png", "barScene");
   repairedShip.addGameObject(moveToBar);
 
-  CollectableObject frontPiece1 = new CollectableObject("frontPiece", 1050, 500, 100, 100, frontPiece);
+  CollectableObject frontPiece1 = new CollectableObject("frontPiece", 700, 600, 100, 100, frontPiece);
   CollectableObject shipAsset1 = new CollectableObject("shipAsset", 1021, 286, 250, 250, shipAsset);
 
 
-  CollectableObject woodPiece1 = new CollectableObject("woodPiece", 800, 500, 100, 100, woodPiece);
+  CollectableObject woodPiece1 = new CollectableObject("woodPiece", 450, 600, 100, 100, woodPiece);
 
   GameObject woodImg = new GameObject("wood", 568, 412, 127, 103, "wood_piece.png");
   GameObject pirateFlagImg = new GameObject("pirateFlag", 300, -32, 153, 105, "pirate_flag.png");
@@ -131,28 +129,27 @@ void setup()
 
   strandedIsland.addGameObject(shipObj3);
   strandedIsland.addGameObject(frontPiece1);
-  strandedIsland.addGameObject(toBay);
+ // strandedIsland.addGameObject(toBay);
 
   // SECOND SCENE
-  Scene bayScene = new Scene("bayScene", "piratecabin.jpg");
-  MoveToSceneObject object3 = new MoveToSceneObject("strandedIsland", 50, 600, 454/3, 286/3, "arrowLeft2.png", "strandedIsland");
-  bayScene.addGameObject(object3);
-  CollectableObject rope1 = new CollectableObject("rope1", 900, 550, 100, 100, rope);
-  bayScene.addGameObject(rope1);
-  CollectableObject hammer1 = new CollectableObject("hammer1", 300, 300, 100, 100, hammer);
-  bayScene.addGameObject(hammer1);
-  CollectableObject pirateFlag1 = new CollectableObject("pirateFlag", 400, 400, 100, 100, pirateFlag);
-  bayScene.addGameObject(pirateFlag1);
+  //Scene bayScene = new Scene("bayScene", "piratecabin.jpg");
+  //MoveToSceneObject object3 = new MoveToSceneObject("strandedIsland", 50, 600, 454/3, 286/3, "arrowLeft2.png", "strandedIsland");
+  //bayScene.addGameObject(object3);
+  //CollectableObject rope1 = new CollectableObject("rope1", 900, 550, 100, 100, rope);
+  //bayScene.addGameObject(rope1);
+  //CollectableObject hammer1 = new CollectableObject("hammer1", 300, 300, 100, 100, hammer);
+  //bayScene.addGameObject(hammer1);
+
 
   // FORTH SCENE
   Scene bar = new Scene("barScene", "bar_scene.png");
   MoveToSceneObject goB = new MoveToSceneObject("repairedShip", 50, 600, 454/3, 286/3, "arrowLeft2.png", "repairedShip");
   bar.addGameObject(goB);
-  CollectableObject map1 = new CollectableObject("map", 1150, 200, 100, 100, map);
+  CollectableObject map1 = new CollectableObject("map", 800, 300, 100, 100, map);
   bar.addGameObject(map1);
   Player player = new Player("player", -500, 200, 400, 500, "character.png");
   bar.addGameObject(player);
-  StoryBox pirate1 = new StoryBox("pirate", 650, 200, 500, 500, "pirate.png", new String[]{
+  StoryBox pirate1 = new StoryBox("pirate", 958, 100, 242, 259, "blank.png", new String[]{
     "Ahoy, traveller. What can I get ya.", //The bartender
     "*You pass him some gold.*", //The player
     "Beer, none of that watered down piss. I want the good stuff", //The player
@@ -173,12 +170,11 @@ void setup()
 
   //TREASURE SCENE
   Scene treasureScene = new Scene ("treasure_scene", "treasure_scene.png");
-  CollectableObject keyT = new CollectableObject("treasureKey", 800, 500, 100, 100, treasureKey);
+  CollectableObject keyT = new CollectableObject("treasureKey", 900, 350, 100, 100, treasureKey);
   treasureScene.addGameObject(keyT);
   //StoryBox rum = new StoryBox("rum", 798, 250, 100, 100, "rum.png", new String[]{
   //"Congratulations guys!! We just found the best rum in the world!", "Let's get drunk, we deserve it!", "Aye, aye captain!"});
   treasureScene.addGameObject(treasureDetect);
-
 
   MoveToSceneObject endScene = new MoveToSceneObject("sailing_cutscene_back", 1100, 400, 454/3, 286/3, "arrowRight.png", "sailing_cutscene_back");
   RequireObject goOn = new RequireObject("requiresRum", 1100, 400, 454/3, 286/3, "arrowRight.png", "Find the treasure!", rum, endScene);
@@ -201,9 +197,10 @@ void setup()
   sceneManager.addScene(night);
   sceneManager.addScene(strandedIsland);
   sceneManager.addScene(repairedShip);
-  sceneManager.addScene(bayScene);
+  //sceneManager.addScene(bayScene);
   sceneManager.addScene(bar);
   sceneManager.addScene(sailingScene);
+ 
   sceneManager.addScene(treasureScene);
   sceneManager.addScene(endSailing);
   sceneManager.addScene(endS);
@@ -211,21 +208,21 @@ void setup()
 
 void draw()
 {
+//  println(mouseX, mouseY);
   sceneManager.getCurrentScene().draw(wwidth, wheight);
   sceneManager.getCurrentScene().updateScene();
   inventoryManager.clearMarkedForDeathCollectables();
   inventoryManager.drawSlots();
   inventoryManager.drawCollectables();
   mouseWentDown = false;
-  if (play)
-  {
-    image(last, 0, 0);
-  }
+  //if (play)
+  //{
+  //  image(last, 0, 0);
+  //}
   if (playMusic) {
     pickUp.play();
     playMusic = false;
   }
-  //println(mouseX, mouseY);
 }
 
 void movieEvent(Movie movie) {

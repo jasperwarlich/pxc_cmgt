@@ -7,7 +7,6 @@ class RequireObject extends TextObject {
   private ReplaceImage image;
   String identifier;
   Movie movie;
-  PApplet p;
   boolean play = false;
 
   public RequireObject(String identifier, int x, int y, int owidth, int oheight, 
@@ -24,9 +23,9 @@ class RequireObject extends TextObject {
     
   }
   
-  public void movieEvent(Movie movie) {
-    movie.read();
-  }
+  //public void movieEvent(Movie movie) {
+  //  movie.read();
+  //}
   
   
  
