@@ -15,12 +15,19 @@ class TextObject extends GameObject {
     public void draw() {
     super.draw();
     if (displayText) {
-      textSize(13);
-      fill(255);
-      rect(this.x, this.y, textWidth + 30, textHeight, 8);
-      fill(0);
-      textSize(13);      
-      text(text, this.x, this.y + 15, textWidth, textHeight);
+      //textSize(13);
+      //fill(255);
+      //rect(this.x, this.y, textWidth + 30, textHeight, 8);
+      //fill(0);
+      //textSize(13);      
+      //text(text, this.x, this.y + 15, textWidth, textHeight);
+      textSize(20);
+        //storyText = getText(i);
+        int rectY= 590;
+        fill(0);
+        rect(0, rectY, 1280, 300);
+        fill(255);
+        text(text, 20, 620);
     }
   }
   @Override

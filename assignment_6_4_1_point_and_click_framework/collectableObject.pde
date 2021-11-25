@@ -28,7 +28,9 @@ class CollectableObject extends GameObject {
       rect(mouseX-30, mouseY+20, 85, 50, 20);
       fill(255);
       text("PICK UP", mouseX-10, mouseY +50);
+      cursor(HAND);
        }
+       cursor(ARROW);
     //  cursor(HAND);
     //} else if(!mouseIsHovering) {
     //  cursor(ARROW);
