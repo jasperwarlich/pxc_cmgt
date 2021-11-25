@@ -1,3 +1,5 @@
+import processing.video.*;
+ public boolean play = false;
 class Scene {
   public String sceneName;
   private PImage backgroundImage;
@@ -8,6 +10,9 @@ class Scene {
   private ArrayList<ReplaceImage> images;
   float i = 100f;
   int timer = 0;
+
+ 
+
   public Scene(String sceneName, String backgroundImageFile) {
     this.sceneName = sceneName;
     this.backgroundImage = loadImage(backgroundImageFile);
@@ -44,11 +49,22 @@ class Scene {
   }
 
   public void draw(int wwidth, int wheight) {
+    println(sceneName);
     image(backgroundImage, 0, 0, wwidth, wheight);
     for (GameObject object : gameObjects) {
       object.draw();
+    }     
+    if (sceneName == "sailing_cutscene_back") {
+      last.play();
+      last.read();
+      play = true;
+    } else
+    {
+      play = false;
     }
   }
+
+
   public void mouseMoved() {
     for (GameObject object : gameObjects) {
       object.mouseMoved();
@@ -63,5 +79,8 @@ class Scene {
 
   public String getSceneName() {
     return this.sceneName;
+  }
+  void movieEvent(Movie m) {
+    m.read();
   }
 }

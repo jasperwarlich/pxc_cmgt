@@ -1,5 +1,5 @@
 import processing.sound.*;
-
+import processing.video.*;
 int wwidth = 1280;
 int wheight = 720;
 
@@ -7,12 +7,13 @@ final SceneManager sceneManager = new SceneManager();
 final InventoryManager inventoryManager = new InventoryManager();
 ArrayList<RequireObject> requiredShipItems = new ArrayList<RequireObject>();
 
-
 boolean mouseWentDown = false;
 
 PImage birds;
 
 SoundFile background;
+
+Movie last;
 
 void settings()
 {
@@ -21,9 +22,10 @@ void settings()
 
 void setup()
 {
+  last = new Movie(this, "treasureCutscene.mp4");
   Scene strandedIsland = new Scene("strandedIsland", "wrecked_ship.png");
   background = new SoundFile(this, "background.wav");
-  background.loop();
+  //background.loop();
   frameRate(60);
   Collectable rope = new Collectable("rope", "rope.png");
   Collectable hammer = new Collectable("hammer", "hammer.png");
@@ -191,6 +193,12 @@ void draw()
   inventoryManager.drawSlots();
   inventoryManager.drawCollectables();
   mouseWentDown = false;
+  
+  if(play)
+  {
+    image(last, 0, 0);
+  }
+  
 }
 void mouseMoved() {
   sceneManager.getCurrentScene().mouseMoved();
