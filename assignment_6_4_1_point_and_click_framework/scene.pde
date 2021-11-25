@@ -8,13 +8,21 @@ class Scene {
   private ArrayList<ReplaceImage> images;
   float i = 100f;
   int timer = 0;
+  RequireObject treasure;
+  boolean videoPlaying = false;
+  
+  
+  
   public Scene(String sceneName, String backgroundImageFile) {
     this.sceneName = sceneName;
     this.backgroundImage = loadImage(backgroundImageFile);
     gameObjects = new ArrayList<GameObject>();
     markedForDeathGameObjects = new ArrayList<GameObject>();
     recentlyAddedGameObjects = new ArrayList<GameObject>();
+
   }
+  
+  
 
   public void addGameObject(GameObject object) {
     recentlyAddedGameObjects.add(object);
@@ -42,12 +50,20 @@ class Scene {
       recentlyAddedGameObjects  = new ArrayList<GameObject>();
     }
   }
+  
+  
 
   public void draw(int wwidth, int wheight) {
+    
+    if(videoPlaying) {
+      clear();
+    } else {
     image(backgroundImage, 0, 0, wwidth, wheight);
     for (GameObject object : gameObjects) {
       object.draw();
     }
+    }
+    
   }
   public void mouseMoved() {
     for (GameObject object : gameObjects) {

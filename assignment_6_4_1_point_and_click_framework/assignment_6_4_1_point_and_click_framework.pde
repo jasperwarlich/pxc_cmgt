@@ -1,10 +1,17 @@
 import processing.sound.*;
+import processing.video.*;
+Movie movie;
 
 int wwidth = 1280;
 int wheight = 720;
 
 final SceneManager sceneManager = new SceneManager();
 final InventoryManager inventoryManager = new InventoryManager();
+
+ 
+   
+
+
 ArrayList<RequireObject> requiredShipItems = new ArrayList<RequireObject>();
 
 
@@ -21,11 +28,23 @@ void settings()
 
 void setup()
 {
+  
+
+  PApplet p = this;
+
+   Collectable rum = new Collectable("rum", "rum.png");
+
+ CollectableObject rumB = new CollectableObject("rum", 798, 250, 100, 100, rum);
+      Collectable treasureKey = new Collectable("key", "key.png");
+  RequireObject treasureDetect = new RequireObject("requiresKey", 798, 263, 91, 53, "blank.png", "You need a key!", treasureKey, rumB, this);
+  movie = new Movie(this, "treasureCutscene.mp4");
+  //movie.loop();
   Scene strandedIsland = new Scene("strandedIsland", "wrecked_ship.png");
   background = new SoundFile(this, "background.wav");
   background.loop();
   frameRate(60);
-  Collectable rope = new Collectable("rope", "rope.png");
+  Collectable rope;
+  rope  = new Collectable("rope", "rope.png");
   Collectable hammer = new Collectable("hammer", "hammer.png");
   ArrayList<Collectable> shipRepair = new ArrayList<Collectable>();
 
@@ -34,8 +53,7 @@ void setup()
   Collectable shipAsset = new Collectable("shipAsset", "ship_asset.png");
   Collectable woodPiece = new Collectable("woodPiece", "wood_piece.png");
   Collectable map = new Collectable("map", "map.png");
-  Collectable treasureKey = new Collectable("key", "key.png");
-  Collectable rum = new Collectable("rum", "rum.png");
+
 
   // START
   Scene start = new Scene("start", "titlescreen.png");
@@ -156,10 +174,8 @@ void setup()
   Scene treasureScene = new Scene ("treasure_scene", "treasure_scene.png");
   CollectableObject keyT = new CollectableObject("treasureKey", 800, 500, 100, 100, treasureKey);
   treasureScene.addGameObject(keyT);
-  CollectableObject rumB = new CollectableObject("rum", 798, 250, 100, 100, rum);
   //StoryBox rum = new StoryBox("rum", 798, 250, 100, 100, "rum.png", new String[]{
   //"Congratulations guys!! We just found the best rum in the world!", "Let's get drunk, we deserve it!", "Aye, aye captain!"});
-  RequireObject treasureDetect = new RequireObject("requiresKey", 798, 263, 91, 53, "blank.png", "You need a key!", treasureKey, rumB);
   treasureScene.addGameObject(treasureDetect);
   MoveToSceneObject endScene = new MoveToSceneObject("sailing_cutscene_back", 1100, 400, 454/3, 286/3, "arrowRight.png", "sailing_cutscene_back");
   RequireObject goOn = new RequireObject("requiresRum", 1100, 400, 454/3, 286/3, "arrowRight.png", "Find the treasure!", rum, endScene);
@@ -192,6 +208,8 @@ void setup()
 
 void draw()
 {
+  
+  
   sceneManager.getCurrentScene().draw(wwidth, wheight);
   sceneManager.getCurrentScene().updateScene();
   inventoryManager.clearMarkedForDeathCollectables();
@@ -199,6 +217,11 @@ void draw()
   inventoryManager.drawCollectables();
   mouseWentDown = false;
 }
+
+void movieEvent(Movie movie) {
+  movie.read();
+}
+
 void mouseMoved() {
   sceneManager.getCurrentScene().mouseMoved();
 }
