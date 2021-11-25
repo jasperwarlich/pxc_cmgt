@@ -2,10 +2,12 @@ class CollectableObject extends GameObject {
   private Collectable collectable;
   private GameObject replaceWith;
   private boolean willReplaceByAnotherGameObject;
+  String identifier;
 
   public CollectableObject(String identifier, int x, int y, int owidth, 
     int oheight, Collectable collectable) {
     this(identifier, x, y, owidth, oheight, collectable, null);
+    this.identifier = identifier;
   }
 
   public CollectableObject(String identifier, int x, int y, int owidth, 
@@ -43,6 +45,12 @@ class CollectableObject extends GameObject {
     if (mouseIsHovering) {
       inventoryManager.addCollectable(collectable);
       sceneManager.getCurrentScene().removeGameObject(this);
+       FirstDialog keyFound = new FirstDialog("treasureDialog",0,0,0,0, new String[]{
+          "Captain: \n“I bet this will open that chest”"
+        });
+        if(identifier == "treasureKey") {
+          sceneManager.getCurrentScene().addGameObject(keyFound);
+        }
       if (willReplaceByAnotherGameObject) {
         sceneManager.getCurrentScene().addGameObject(replaceWith);
       }

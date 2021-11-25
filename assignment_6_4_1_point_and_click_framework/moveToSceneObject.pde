@@ -2,6 +2,7 @@ class MoveToSceneObject extends GameObject {
 
   private String nextSceneIdentifier;
   private boolean moveBack;
+  String identifier;
 
   public MoveToSceneObject(String identifier, int x, int y, int owidth, int oheight, boolean moveBack) {
     this(identifier, x, y, owidth, oheight, "", moveBack);
@@ -14,6 +15,7 @@ class MoveToSceneObject extends GameObject {
 
   public MoveToSceneObject(String identifier, int x, int y, int owidth, int oheight, String nextSceneIdentifier) {
     this(identifier, x, y, owidth, oheight, "", nextSceneIdentifier);
+    this.identifier = identifier;
   }
 
   public MoveToSceneObject(String identifier, int x, int y, int owidth, int oheight, String gameObjectImageFile, String nextSceneIdentifier) {

@@ -29,7 +29,7 @@ class FirstDialog extends GameObject {
   PImage found = loadImage("check.png");
   boolean dontShowObjs = true;
   PImage captain1 = loadImage("captain_talking.png");
-  
+
   boolean isObjective;
 
 
@@ -43,8 +43,8 @@ class FirstDialog extends GameObject {
   //  this.textT = text;
   //  this.item = item;
   //}
-  
-    public FirstDialog(String identifier, int x, int y, int owidth, int oheight, String[] text, ArrayList<RequireObject> item) {
+
+  public FirstDialog(String identifier, int x, int y, int owidth, int oheight, String[] text, ArrayList<RequireObject> item) {
     super(identifier, x, y, owidth, oheight);
     this.identifier = identifier;
     this.x = x;
@@ -54,7 +54,7 @@ class FirstDialog extends GameObject {
     this.textT = text;
     this.item = item;
   }
-   public FirstDialog(String identifier, int x, int y, int owidth, int oheight, String[] text) {
+  public FirstDialog(String identifier, int x, int y, int owidth, int oheight, String[] text) {
     super(identifier, x, y, owidth, oheight);
     this.identifier = identifier;
     this.x = x;
@@ -63,8 +63,8 @@ class FirstDialog extends GameObject {
     this.oheight = oheight;
     this.textT = text;
   }
-  
-   public FirstDialog(String identifier, int x, int y, int owidth, int oheight, String[] text, ArrayList<RequireObject> item, boolean objective) {
+
+  public FirstDialog(String identifier, int x, int y, int owidth, int oheight, String[] text, ArrayList<RequireObject> item, boolean objective) {
     super(identifier, x, y, owidth, oheight);
     this.identifier = identifier;
     this.x = x;
@@ -103,65 +103,64 @@ class FirstDialog extends GameObject {
         }
       }
     }
-    
-    if(dialogShow == false && identifier == "dialog1" || isObjective) {
-      dontShowObjs = false;
-      
-      if(sceneManager.getCurrentScene().getSceneName() == "night") {
 
-      try {
+    if (dialogShow == false && identifier == "dialog1" || isObjective) {
+      dontShowObjs = false;
+
+      if (sceneManager.getCurrentScene().getSceneName() == "night") {
+
+        try {
           sceneManager.goToScene("strandedIsland");
         } 
         catch(Exception e) { 
           println(e.getMessage());
         }
       }
-             
-       if(sceneManager.getCurrentScene().getSceneName() == "strandedIsland") {
-      fill(0);
-      rect(1100,25,150,300,28);
-      fill(255);
-      textSize(14);
-      text("Find the missing \nparts (indicated\nwith red) and \ninteract on the ship", 1110, 55);
-        
-      
-      if(item.get(0).isUsed == false) {
-        image(notFound,1110,140,25,25);
-        text("Front Piece", 1150, 155);
-      } else if(item.get(0).isUsed == true) {
-        image(found,1110,140,25,25);
-        text("Front Piece", 1150, 155);
-      }
-      
-      if(item.get(1).isUsed == false) {
-        image(notFound,1110,175,25,25);
-        text("Main Mast", 1150, 190);
-      } else if(item.get(1).isUsed == true) {
-        image(found,1110,175,25,25);
-        text("Main Mast", 1150, 190);
-      }
-      
-      if(item.get(2).isUsed == false) {
-        image(notFound,1110,210,25,25);
-        text("Pirate Flag", 1150, 220);
-      } else if(item.get(2).isUsed == true) {
-        image(found,1110,210,25,25);
-        text("Pirate Flag", 1150, 220);
-      }
-      
-      if(item.get(3).isUsed == false) {
-        image(notFound,1110,245,25,25);
-        text("Wood Piece", 1150, 260);
-        
-      } else if(item.get(3).isUsed == true) {
-        image(found,1110,245,25,25);
-        text("Wood Piece", 1150, 260);
-      }
-       } 
-        
-        
-       if(item.get(0).isUsed == true && item.get(1).isUsed == true && item.get(2).isUsed == true && item.get(3).isUsed == true) {
-      try {
+
+      if (sceneManager.getCurrentScene().getSceneName() == "strandedIsland") {
+        fill(0);
+        rect(1100, 25, 150, 300, 28);
+        fill(255);
+        textSize(14);
+        text("Find the missing \nparts (indicated\nwith red) and \ninteract on the ship", 1110, 55);
+
+
+        if (item.get(0).isUsed == false) {
+          image(notFound, 1110, 140, 25, 25);
+          text("Front Piece", 1150, 155);
+        } else if (item.get(0).isUsed == true) {
+          image(found, 1110, 140, 25, 25);
+          text("Front Piece", 1150, 155);
+        }
+
+        if (item.get(1).isUsed == false) {
+          image(notFound, 1110, 175, 25, 25);
+          text("Main Mast", 1150, 190);
+        } else if (item.get(1).isUsed == true) {
+          image(found, 1110, 175, 25, 25);
+          text("Main Mast", 1150, 190);
+        }
+
+        if (item.get(2).isUsed == false) {
+          image(notFound, 1110, 210, 25, 25);
+          text("Pirate Flag", 1150, 220);
+        } else if (item.get(2).isUsed == true) {
+          image(found, 1110, 210, 25, 25);
+          text("Pirate Flag", 1150, 220);
+        }
+
+        if (item.get(3).isUsed == false) {
+          image(notFound, 1110, 245, 25, 25);
+          text("Wood Piece", 1150, 260);
+        } else if (item.get(3).isUsed == true) {
+          image(found, 1110, 245, 25, 25);
+          text("Wood Piece", 1150, 260);
+        }
+      } 
+
+
+      if (item.get(0).isUsed == true && item.get(1).isUsed == true && item.get(2).isUsed == true && item.get(3).isUsed == true) {
+        try {
           sceneManager.goToScene("repairedShip");
           item.get(0).isUsed = false;
           item.get(1).isUsed = false;
@@ -171,24 +170,16 @@ class FirstDialog extends GameObject {
         catch(Exception e) { 
           println(e.getMessage());
         }
-       }
-       
-       if(sceneManager.getCurrentScene().getSceneName() == "repairedShip") {
-          fill(0);
-      rect(900,25,300,100,28);
-      fill(255);
-      textSize(14);
-      text("Go to the bar and talk to the bartender", 910, 80);
-       }
-      
-      
-    }
-    
-    
-   
-    
-    
+      }
 
+      if (sceneManager.getCurrentScene().getSceneName() == "repairedShip") {
+        fill(0);
+        rect(900, 25, 300, 100, 28);
+        fill(255);
+        textSize(14);
+        text("Go to the bar and talk to the bartender", 910, 80);
+      }
+    }
   }
 
   String getText(int i) {

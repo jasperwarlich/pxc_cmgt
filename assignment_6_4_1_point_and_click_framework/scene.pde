@@ -12,10 +12,20 @@ class Scene {
   int timer = 0;
   RequireObject treasure;
   boolean videoPlaying = false;
+  SoundFile musicFile;
   
   
 
 
+
+  public Scene(String sceneName, String backgroundImageFile, SoundFile pMusicFile) {
+    this.sceneName = sceneName;
+    this.backgroundImage = loadImage(backgroundImageFile);
+    gameObjects = new ArrayList<GameObject>();
+    markedForDeathGameObjects = new ArrayList<GameObject>();
+    recentlyAddedGameObjects = new ArrayList<GameObject>();
+    this.musicFile = pMusicFile;
+  }
 
   public Scene(String sceneName, String backgroundImageFile) {
     this.sceneName = sceneName;
@@ -23,9 +33,22 @@ class Scene {
     gameObjects = new ArrayList<GameObject>();
     markedForDeathGameObjects = new ArrayList<GameObject>();
     recentlyAddedGameObjects = new ArrayList<GameObject>();
-
   }
   
+  public void playBGMusic() {
+    if(sceneManager.getCurrentScene().sceneName == sceneName) {
+      musicFile.play();
+    }
+    
+  }
+  
+  public void setup() {
+    if(videoPlaying) {
+      clear();
+    }
+  }
+  
+
   
 
   public void addGameObject(GameObject object) {
@@ -59,38 +82,16 @@ class Scene {
 
   public void draw(int wwidth, int wheight) {
     
-    
-    if(videoPlaying) {
-      clear();
-    } else {
-    image(backgroundImage, 0, 0, wwidth, wheight);
+      image(backgroundImage, 0, 0, wwidth, wheight);
     for (GameObject object : gameObjects) {
       object.draw();
-    }     
-    if (sceneName == "sailing_cutscene_back") { 
-      last.play();
-      last.read();
-      println(last.time(), last.duration());
-      if(last.time() == 6.7) {
-        videoPlaying = false;
-        try {
-          sceneManager.goToScene("endingscreen");
-        } 
-        catch(Exception e) { 
-          println(e.getMessage());
-        }      }
-      
-    } else {
-      play = false;
     }
-    //if(last.time() == last.duration()) {
-    //    println("Video is over");
-    //    videoPlaying = false;
-    //  }
+    
+   
     
     
-      play = true;
-    } 
+      //play = true;
+    
   }
 
 

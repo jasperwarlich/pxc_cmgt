@@ -7,7 +7,6 @@ class RequireObject extends TextObject {
   private ReplaceImage image;
   String identifier;
   Movie movie;
-  PApplet p;
   boolean play = false;
 
   public RequireObject(String identifier, int x, int y, int owidth, int oheight, 
@@ -24,9 +23,9 @@ class RequireObject extends TextObject {
     
   }
   
-  public void movieEvent(Movie movie) {
-    movie.read();
-  }
+  //public void movieEvent(Movie movie) {
+  //  movie.read();
+  //}
   
   
  
@@ -35,8 +34,17 @@ class RequireObject extends TextObject {
     public void mouseClicked() {
     
     if (mouseIsHovering && inventoryManager.containsCollectable(collectable)) {
-      
+      SoundFile placeItem = new SoundFile(p, "placeitem.wav");
+      placeItem.play();
       isUsed = true;
+      
+      if (identifier == "requiresKey") {
+        FirstDialog chestOpened = new FirstDialog("treasureDialog",0,0,0,0, new String[]{
+          "Captain: \n“Ah yes, the true pirates treasure. ”"
+        });
+        sceneManager.getCurrentScene().addGameObject(chestOpened);
+      }
+      
       inventoryManager.removeCollectable(collectable);
       sceneManager.getCurrentScene().removeGameObject(this);
       sceneManager.getCurrentScene().addGameObject(replaceWith);

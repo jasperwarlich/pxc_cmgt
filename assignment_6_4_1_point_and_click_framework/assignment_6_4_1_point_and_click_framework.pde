@@ -1,3 +1,4 @@
+
 import processing.sound.*;
 import processing.video.*;
 Movie movie;
@@ -31,13 +32,7 @@ void settings()
 
 void setup()
 {
-<<<<<<< HEAD
- 
 
-  
-
-=======
->>>>>>> 71728fcb61f7a3ccbe311880626579be49bd6b6b
   PApplet p = this;
   Collectable rum = new Collectable("rum", "rum.png");
   CollectableObject rumB = new CollectableObject("rum", 798, 250, 100, 100, rum);
@@ -48,14 +43,14 @@ void setup()
   pickUp = new SoundFile(this, "PickUpItem.wav");
   
   last = new Movie(this, "treasureCutscene.mp4");
-  Scene strandedIsland = new Scene("strandedIsland", "wrecked_ship.png");
+  SoundFile rainMusic = new SoundFile(p, "pirate.wav");
+  Scene strandedIsland = new Scene("strandedIsland", "wrecked_ship.png", rainMusic);
   background = new SoundFile(this, "background.wav");
-  background.loop();
+  //background.loop();
   frameRate(60);
   Collectable rope;
   rope  = new Collectable("rope", "rope.png");
   Collectable hammer = new Collectable("hammer", "hammer.png");
-  ArrayList<Collectable> shipRepair = new ArrayList<Collectable>();
 
   Collectable frontPiece = new Collectable("frontPiece", "frontpiece.png");
   Collectable pirateFlag = new Collectable("pirateFlag", "pirate_flag.png");
@@ -65,7 +60,7 @@ void setup()
 
 
   // START
-  Scene start = new Scene("start", "titlescreen.png");
+  Scene start = new Scene("start", "titlescreen.png", rainMusic);
   MoveToSceneObject play = new MoveToSceneObject("toStart", 458, 400, 400, 150, "blank.png", "night");
   start.addGameObject(play);
 
@@ -75,10 +70,10 @@ void setup()
   MovingObject birds = new MovingObject("birds", 1, -150, 600, 600, "birds.png");
 
   // Opening dialog
-  Scene night = new Scene("night", "wakingup_scene.png");
+  Scene night = new Scene("night", "wakingup_scene.png", rainMusic);
 
   // Ship Repaired
-  Scene repairedShip = new Scene("repairedShip", "repaired_ship.png");
+  Scene repairedShip = new Scene("repairedShip", "repaired_ship.png", rainMusic);
   MoveToSceneObject sail = new MoveToSceneObject("sailing_cutscene", 50, 600, 454/3, 286/3, "arrowLeft2.png", "sailing_cutscene");
   RequireObject needMap = new RequireObject("requiresMap", 50, 600, 454/3, 286/3, "arrowLeft2.png", "You need to find a map!", map, sail);
   repairedShip.addGameObject(needMap);
@@ -123,9 +118,6 @@ void setup()
   night.addGameObject(dialog1);
   repairedShip.addGameObject(dialog3);
 
-  if (requiredShipItems.get(0).isUsed == true && requiredShipItems.get(1).isUsed == true && requiredShipItems.get(2).isUsed == true && requiredShipItems.get(3).isUsed == true) {
-    println("Done!");
-  }
 
   strandedIsland.addGameObject(dialog1);
   strandedIsland.addGameObject(birds);
@@ -143,7 +135,7 @@ void setup()
   strandedIsland.addGameObject(toBay);
 
   // SECOND SCENE
-  Scene bayScene = new Scene("bayScene", "piratecabin.jpg");
+  Scene bayScene = new Scene("bayScene", "piratecabin.jpg", rainMusic);
   MoveToSceneObject object3 = new MoveToSceneObject("strandedIsland", 50, 600, 454/3, 286/3, "arrowLeft2.png", "strandedIsland");
   bayScene.addGameObject(object3);
   CollectableObject rope1 = new CollectableObject("rope1", 900, 550, 100, 100, rope);
@@ -154,7 +146,7 @@ void setup()
   bayScene.addGameObject(pirateFlag1);
 
   // FORTH SCENE
-  Scene bar = new Scene("barScene", "bar_scene.png");
+  Scene bar = new Scene("barScene", "bar_scene.png", rainMusic);
   MoveToSceneObject goB = new MoveToSceneObject("repairedShip", 50, 600, 454/3, 286/3, "arrowLeft2.png", "repairedShip");
   bar.addGameObject(goB);
   CollectableObject map1 = new CollectableObject("map", 1150, 200, 100, 100, map);
@@ -176,17 +168,25 @@ void setup()
   bar.addGameObject(pirate1);
 
   //SAILING SCENE
-  Scene sailingScene = new Scene ("sailing_cutscene", "sailing_cutscene.png");
+  Scene sailingScene = new Scene ("sailing_cutscene", "sailing_cutscene.png", rainMusic);
   MoveToSceneObject inTheSea = new MoveToSceneObject("treasure_scene", 50, 600, 454/3, 286/3, "arrowLeft2.png", "treasure_scene");
   sailingScene.addGameObject(inTheSea);
 
   //TREASURE SCENE
-  Scene treasureScene = new Scene ("treasure_scene", "treasure_scene.png");
+  FirstDialog treasureDialog = new FirstDialog("treasureDialog",0,0,0,0, new String[]{
+    "Crew: \n“You did it captain we made it! We are rich!”",
+    "Captain: \n“Not yet there that chest seems to be locked”"
+  });
+ 
+  Scene treasureScene = new Scene ("treasure_scene", "treasure_scene.png", rainMusic);
   CollectableObject keyT = new CollectableObject("treasureKey", 800, 500, 100, 100, treasureKey);
   treasureScene.addGameObject(keyT);
   //StoryBox rum = new StoryBox("rum", 798, 250, 100, 100, "rum.png", new String[]{
   //"Congratulations guys!! We just found the best rum in the world!", "Let's get drunk, we deserve it!", "Aye, aye captain!"});
   treasureScene.addGameObject(treasureDetect);
+  treasureScene.addGameObject(treasureDialog);
+  
+  
 
 
   MoveToSceneObject endScene = new MoveToSceneObject("sailing_cutscene_back", 1100, 400, 454/3, 286/3, "arrowRight.png", "sailing_cutscene_back");
@@ -196,12 +196,12 @@ void setup()
 
 
   //End Scene
-  Scene endSailing = new Scene ("sailing_cutscene_back", "sailing_cutscene_back.png");
+  Scene endSailing = new Scene ("sailing_cutscene_back", "sailing_cutscene_back.png", rainMusic);
   MoveToSceneObject end = new MoveToSceneObject("endingscreen", 1100, 600, 454/3, 286/3, "arrowRight.png", "endingscreen");
   endSailing.addGameObject(end);
 
   //End end scren
-  Scene endS = new Scene ("endingscreen", "endingscreen.png");
+  Scene endS = new Scene ("endingscreen", "endingscreen.png", rainMusic);
   MoveToSceneObject playAgain = new MoveToSceneObject("start", 350, 200, 575, 210, "blank.png", "start");
   endS.addGameObject(playAgain);
 
@@ -220,6 +220,7 @@ void setup()
 
 void draw()
 {
+ 
   sceneManager.getCurrentScene().draw(wwidth, wheight);
   sceneManager.getCurrentScene().updateScene();
   inventoryManager.clearMarkedForDeathCollectables();
@@ -231,7 +232,7 @@ void draw()
     image(last, 0, 0);
   }
   if (playMusic) {
-    pickUp.play();
+    //pickUp.play();
     playMusic = false;
   }
   //println(mouseX, mouseY);

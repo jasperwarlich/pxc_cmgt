@@ -19,6 +19,7 @@ class InventoryManager {
         SoundFile pickup = new SoundFile(p, "PickUpItem.wav");
 
     pickup.play();
+    
   }
 
   public void removeCollectable(Collectable collectable) {
