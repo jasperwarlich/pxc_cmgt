@@ -46,6 +46,7 @@ void setup()
 
   // FIRST SCENE
   MoveToSceneObject toBay = new MoveToSceneObject("toBay", 1100, 400, 454/3, 286/3, "arrowRight.png", "bayScene");
+ 
   MovingObject birds = new MovingObject("birds", 1, -150, 600, 600, "birds.png");
 
   // Opening dialog
@@ -60,7 +61,7 @@ void setup()
   repairedShip.addGameObject(moveToBar);
 
   CollectableObject frontPiece1 = new CollectableObject("frontPiece", 1050, 500, 100, 100, frontPiece);
-  CollectableObject shipAsset1 = new CollectableObject("shipAsset", 850, 300, 250, 250, shipAsset);
+  CollectableObject shipAsset1 = new CollectableObject("shipAsset", 1021, 286, 250, 250, shipAsset);
 
 
   CollectableObject woodPiece1 = new CollectableObject("woodPiece", 800, 500, 100, 100, woodPiece);
@@ -69,6 +70,8 @@ void setup()
   GameObject pirateFlagImg = new GameObject("pirateFlag", 330, -32, 153, 105, "pirate_flag.png");
   GameObject frontPieceImg = new GameObject("frontPiece", 763, 195, 175, 164, "frontpiece.png");
   GameObject shipAssetImg = new GameObject("shipAsset", 325, 38, 261, 123, "ship_asset.png");
+  
+
 
   //MoveToSceneObject moveOn = new MoveToSceneObject("repaired_ship", 50, 400, 454/3, 286/2, "check.png", "repaired_ship");
   RequireObject shipObj3 = new RequireObject("requiresFrontPiece", 763, 195, 175, 164, "frontpiece_sil.png", "You need to find a front piece!", frontPiece, frontPieceImg);
@@ -104,7 +107,11 @@ void setup()
   strandedIsland.addGameObject(woodPiece1);
   strandedIsland.addGameObject(shipObj7);
   strandedIsland.addGameObject(shipObj5);
+  
+  
+
   strandedIsland.addGameObject(shipObj4);
+  
   strandedIsland.addGameObject(shipObj3);
   strandedIsland.addGameObject(frontPiece1);
   strandedIsland.addGameObject(toBay);

@@ -28,6 +28,7 @@ class FirstDialog extends GameObject {
   PImage notFound = loadImage("redcross.png");
   PImage found = loadImage("check.png");
   boolean dontShowObjs = true;
+  PImage captain1 = loadImage("captain_talking.png");
   
   boolean isObjective;
 
@@ -96,6 +97,9 @@ class FirstDialog extends GameObject {
           fill(255);
           textSize(16);
           text("CLOSE", 1192, 660);
+        }
+        if (i == 3) {
+          sceneManager.getCurrentScene().backgroundImage = captain1;
         }
       }
     }
