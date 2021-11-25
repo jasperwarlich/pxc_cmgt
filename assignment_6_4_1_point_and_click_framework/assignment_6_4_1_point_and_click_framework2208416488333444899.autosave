@@ -2,7 +2,6 @@ import processing.sound.*;
 import processing.video.*;
 Movie movie;
 
-
 int wwidth = 1280;
 int wheight = 720;
 
@@ -15,13 +14,12 @@ final InventoryManager inventoryManager = new InventoryManager();
 
 ArrayList<RequireObject> requiredShipItems = new ArrayList<RequireObject>();
 
+
 boolean mouseWentDown = false;
 
 PImage birds;
 
 SoundFile background;
-
-Movie last;
 
 void settings()
 {
@@ -30,7 +28,6 @@ void settings()
 
 void setup()
 {
- 
   
 
   PApplet p = this;
@@ -42,11 +39,9 @@ void setup()
   RequireObject treasureDetect = new RequireObject("requiresKey", 798, 263, 91, 53, "blank.png", "You need a key!", treasureKey, rumB);
   movie = new Movie(this, "treasureCutscene.mp4");
   //movie.loop();
-
-  last = new Movie(this, "treasureCutscene.mp4");
   Scene strandedIsland = new Scene("strandedIsland", "wrecked_ship.png");
   background = new SoundFile(this, "background.wav");
-  //background.loop();
+  background.loop();
   frameRate(60);
   Collectable rope;
   rope  = new Collectable("rope", "rope.png");
@@ -62,7 +57,7 @@ void setup()
 
   // START
   Scene start = new Scene("start", "titlescreen.png");
-  MoveToSceneObject play = new MoveToSceneObject("toStart", 458, 400, 400, 150, "blank.png", "night");
+  MoveToSceneObject play = new MoveToSceneObject("toStart", 350, 200, 575, 210, "blank.png", "night");
   start.addGameObject(play);
 
   // FIRST SCENE
@@ -182,8 +177,6 @@ void setup()
   //StoryBox rum = new StoryBox("rum", 798, 250, 100, 100, "rum.png", new String[]{
   //"Congratulations guys!! We just found the best rum in the world!", "Let's get drunk, we deserve it!", "Aye, aye captain!"});
   treasureScene.addGameObject(treasureDetect);
-  
-  
   MoveToSceneObject endScene = new MoveToSceneObject("sailing_cutscene_back", 1100, 400, 454/3, 286/3, "arrowRight.png", "sailing_cutscene_back");
   RequireObject goOn = new RequireObject("requiresRum", 1100, 400, 454/3, 286/3, "arrowRight.png", "Find the treasure!", rum, endScene);
   treasureScene.addGameObject(goOn);
@@ -223,11 +216,6 @@ void draw()
   inventoryManager.drawSlots();
   inventoryManager.drawCollectables();
   mouseWentDown = false;
-  if(play)
-  {
-    image(last, 0, 0);
-  }
-  //println(mouseX, mouseY);
 }
 
 void movieEvent(Movie movie) {

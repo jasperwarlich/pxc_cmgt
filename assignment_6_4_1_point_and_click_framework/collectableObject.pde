@@ -33,7 +33,6 @@ class CollectableObject extends GameObject {
     //} else if(!mouseIsHovering) {
     //  cursor(ARROW);
     //}
-  
     super.draw();
   }
 
