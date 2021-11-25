@@ -11,10 +11,6 @@ public PApplet p = this;
 final SceneManager sceneManager = new SceneManager();
 final InventoryManager inventoryManager = new InventoryManager();
 
- 
-   
-
-
 ArrayList<RequireObject> requiredShipItems = new ArrayList<RequireObject>();
 
 boolean mouseWentDown = false;
@@ -22,8 +18,11 @@ boolean mouseWentDown = false;
 PImage birds;
 
 SoundFile background;
+SoundFile pickUp;
 
 Movie last;
+
+
 
 void settings()
 {
@@ -32,20 +31,22 @@ void settings()
 
 void setup()
 {
+<<<<<<< HEAD
  
 
   
 
+=======
+>>>>>>> 71728fcb61f7a3ccbe311880626579be49bd6b6b
   PApplet p = this;
-
-   Collectable rum = new Collectable("rum", "rum.png");
-
- CollectableObject rumB = new CollectableObject("rum", 798, 250, 100, 100, rum);
-      Collectable treasureKey = new Collectable("key", "key.png");
+  Collectable rum = new Collectable("rum", "rum.png");
+  CollectableObject rumB = new CollectableObject("rum", 798, 250, 100, 100, rum);
+  Collectable treasureKey = new Collectable("key", "key.png");
   RequireObject treasureDetect = new RequireObject("requiresKey", 798, 263, 91, 53, "blank.png", "You need a key!", treasureKey, rumB);
   movie = new Movie(this, "treasureCutscene.mp4");
   //movie.loop();
-
+  pickUp = new SoundFile(this, "PickUpItem.wav");
+  
   last = new Movie(this, "treasureCutscene.mp4");
   Scene strandedIsland = new Scene("strandedIsland", "wrecked_ship.png");
   background = new SoundFile(this, "background.wav");
@@ -70,12 +71,12 @@ void setup()
 
   // FIRST SCENE
   MoveToSceneObject toBay = new MoveToSceneObject("toBay", 1100, 600, 454/3, 286/3, "arrowRight.png", "bayScene");
- 
+
   MovingObject birds = new MovingObject("birds", 1, -150, 600, 600, "birds.png");
 
   // Opening dialog
   Scene night = new Scene("night", "wakingup_scene.png");
-  
+
   // Ship Repaired
   Scene repairedShip = new Scene("repairedShip", "repaired_ship.png");
   MoveToSceneObject sail = new MoveToSceneObject("sailing_cutscene", 50, 600, 454/3, 286/3, "arrowLeft2.png", "sailing_cutscene");
@@ -94,7 +95,7 @@ void setup()
   GameObject pirateFlagImg = new GameObject("pirateFlag", 300, -32, 153, 105, "pirate_flag.png");
   GameObject frontPieceImg = new GameObject("frontPiece", 763, 225, 150, 150, "frontpiece.png");
   GameObject shipAssetImg = new GameObject("shipAsset", 315, 38, 261, 123, "ship_asset.png");
-  
+
 
 
   //MoveToSceneObject moveOn = new MoveToSceneObject("repaired_ship", 50, 400, 454/3, 286/2, "check.png", "repaired_ship");
@@ -132,11 +133,11 @@ void setup()
   strandedIsland.addGameObject(woodPiece1);
   strandedIsland.addGameObject(shipObj7);
   strandedIsland.addGameObject(shipObj5);
-  
-  
+
+
 
   strandedIsland.addGameObject(shipObj4);
-  
+
   strandedIsland.addGameObject(shipObj3);
   strandedIsland.addGameObject(frontPiece1);
   strandedIsland.addGameObject(toBay);
@@ -186,8 +187,8 @@ void setup()
   //StoryBox rum = new StoryBox("rum", 798, 250, 100, 100, "rum.png", new String[]{
   //"Congratulations guys!! We just found the best rum in the world!", "Let's get drunk, we deserve it!", "Aye, aye captain!"});
   treasureScene.addGameObject(treasureDetect);
-  
-  
+
+
   MoveToSceneObject endScene = new MoveToSceneObject("sailing_cutscene_back", 1100, 400, 454/3, 286/3, "arrowRight.png", "sailing_cutscene_back");
   RequireObject goOn = new RequireObject("requiresRum", 1100, 400, 454/3, 286/3, "arrowRight.png", "Find the treasure!", rum, endScene);
   treasureScene.addGameObject(goOn);
@@ -219,20 +220,21 @@ void setup()
 
 void draw()
 {
-  
-  
   sceneManager.getCurrentScene().draw(wwidth, wheight);
   sceneManager.getCurrentScene().updateScene();
   inventoryManager.clearMarkedForDeathCollectables();
   inventoryManager.drawSlots();
   inventoryManager.drawCollectables();
   mouseWentDown = false;
-  if(play)
+  if (play)
   {
     image(last, 0, 0);
   }
+  if (playMusic) {
+    pickUp.play();
+    playMusic = false;
+  }
   //println(mouseX, mouseY);
-
 }
 
 void movieEvent(Movie movie) {
