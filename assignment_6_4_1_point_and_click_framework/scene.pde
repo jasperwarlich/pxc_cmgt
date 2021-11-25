@@ -10,7 +10,12 @@ class Scene {
   private ArrayList<ReplaceImage> images;
   float i = 100f;
   int timer = 0;
-  int b = 100;
+  RequireObject treasure;
+  boolean videoPlaying = false;
+  
+  
+  
+
 
 
   public Scene(String sceneName, String backgroundImageFile) {
@@ -19,7 +24,10 @@ class Scene {
     gameObjects = new ArrayList<GameObject>();
     markedForDeathGameObjects = new ArrayList<GameObject>();
     recentlyAddedGameObjects = new ArrayList<GameObject>();
+
   }
+  
+  
 
   public void addGameObject(GameObject object) {
     recentlyAddedGameObjects.add(object);
@@ -47,7 +55,15 @@ class Scene {
       recentlyAddedGameObjects  = new ArrayList<GameObject>();
     }
   }
+  
+  
+
   public void draw(int wwidth, int wheight) {
+    
+    
+    if(videoPlaying) {
+      clear();
+    } else {
     image(backgroundImage, 0, 0, wwidth, wheight);
     for (GameObject object : gameObjects) {
       object.draw();
@@ -55,8 +71,30 @@ class Scene {
     if (sceneName == "sailing_cutscene_back") { 
       last.play();
       last.read();
-      play = true;
+<<<<<<< HEAD
+      println(last.time(), last.duration());
+      if(last.time() == 6.7) {
+        videoPlaying = false;
+        try {
+          sceneManager.goToScene("endingscreen");
+        } 
+        catch(Exception e) { 
+          println(e.getMessage());
+        }      }
+      
+    } else {
+      play = false;
     }
+    //if(last.time() == last.duration()) {
+    //    println("Video is over");
+    //    videoPlaying = false;
+    //  }
+    }
+    
+=======
+      play = true;
+    } 
+>>>>>>> 2c054dde6a678434f52265ccb5d024c2655a3662
   }
 
 
