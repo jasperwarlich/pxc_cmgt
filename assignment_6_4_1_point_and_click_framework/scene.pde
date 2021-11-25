@@ -14,16 +14,21 @@ class Scene {
   boolean videoPlaying = false;
   SoundFile musicFile;
   
+<<<<<<< HEAD
   
 
 
 
   public Scene(String sceneName, String backgroundImageFile, SoundFile pMusicFile) {
+=======
+  public Scene(String sceneName, String backgroundImageFile) {
+>>>>>>> 5c9b05669248e802a1f7df462734dfbdbca073f4
     this.sceneName = sceneName;
     this.backgroundImage = loadImage(backgroundImageFile);
     gameObjects = new ArrayList<GameObject>();
     markedForDeathGameObjects = new ArrayList<GameObject>();
     recentlyAddedGameObjects = new ArrayList<GameObject>();
+<<<<<<< HEAD
     this.musicFile = pMusicFile;
   }
 
@@ -50,6 +55,9 @@ class Scene {
   
 
   
+=======
+  }
+>>>>>>> 5c9b05669248e802a1f7df462734dfbdbca073f4
 
   public void addGameObject(GameObject object) {
     recentlyAddedGameObjects.add(object);
@@ -81,17 +89,52 @@ class Scene {
   
 
   public void draw(int wwidth, int wheight) {
+<<<<<<< HEAD
     
       image(backgroundImage, 0, 0, wwidth, wheight);
     for (GameObject object : gameObjects) {
       object.draw();
     }
+=======
+    if(videoPlaying) {
+      clear();
+    } else {
+    image(backgroundImage, 0, 0, wwidth, wheight);
+    for (GameObject object : gameObjects) {
+      object.draw();
+    }     
+    //if (sceneName == "sailing_cutscene_back") { 
+    //  last.play();
+    //  last.read();
+    //  println(last.time(), last.duration());
+    //  if(last.time() == 6.7) {
+    //    videoPlaying = false;
+    //    try {
+    //      sceneManager.goToScene("endingscreen");
+    //    } 
+    //    catch(Exception e) { 
+    //      println(e.getMessage());
+    //    }      }
+      
+    //} else {
+    //  play = false;
+    //}
+    //if(last.time() == last.duration()) {
+    //    println("Video is over");
+    //    videoPlaying = false;
+      //}
+>>>>>>> 5c9b05669248e802a1f7df462734dfbdbca073f4
     
    
     
     
       //play = true;
     
+<<<<<<< HEAD
+=======
+      //play = true;
+    } 
+>>>>>>> 5c9b05669248e802a1f7df462734dfbdbca073f4
   }
 
 
