@@ -95,16 +95,11 @@ void setup()
 
 
   //MoveToSceneObject moveOn = new MoveToSceneObject("repaired_ship", 50, 400, 454/3, 286/2, "check.png", "repaired_ship");
-<<<<<<< HEAD
   RequireObject shipObj3 = new RequireObject("requiresFrontPiece", 763, 195, 175, 164, "frontpiece_sil.png", "Captain: \nThis front piece seems to missing..", frontPiece, frontPieceImg);
   RequireObject shipObj4 = new RequireObject("requiresShipAsset", 325, 38, 261, 123, "ship_asset_sil.png", "Captain: \nWithout a main mast we won't be able to sail...", shipAsset, shipAssetImg);
   RequireObject shipObj5 = new RequireObject("requiresPirateFlag", 330, -32, 153, 105, "pirate_flag_sil.png", "Captain: \nWe must have a pirate flag to scare of other sailors.", pirateFlag, pirateFlagImg);
-=======
-  RequireObject shipObj3 = new RequireObject("requiresFrontPiece", 763, 195, 175, 164, "frontpiece_sil.png", "You need to find a front piece!", frontPiece, frontPieceImg);
-  RequireObject shipObj4 = new RequireObject("requiresShipAsset", 325, 38, 261, 123, "ship_asset_sil.png", "You need to find a ship asset!", shipAsset, shipAssetImg);
-  RequireObject shipObj5 = new RequireObject("requiresPirateFlag", 310, -32, 153, 105, "pirate_flag_sil.png", "You need to find a pirate flag!", pirateFlag, pirateFlagImg);
->>>>>>> 2c054dde6a678434f52265ccb5d024c2655a3662
-  // RequireObject shipObj6 = new RequireObject("requiresMap", 700, 200, 100, 100, "quest.png", "You need to find a map!", map, shipObj5);
+
+
   RequireObject shipObj7 = new RequireObject("requiresWoodPiece", 568, 412, 127, 103, "wood_piece_sil.png", "Captain: \nHmm.. I probabably need wood to fill this hole.", woodPiece, woodImg);
 
   requiredShipItems.add(shipObj3);
@@ -193,11 +188,8 @@ void setup()
   MoveToSceneObject endScene = new MoveToSceneObject("sailing_cutscene_back", 1100, 400, 454/3, 286/3, "arrowRight.png", "sailing_cutscene_back");
   RequireObject goOn = new RequireObject("requiresRum", 1100, 400, 454/3, 286/3, "arrowRight.png", "Find the treasure!", rum, endScene);
   treasureScene.addGameObject(goOn);
-<<<<<<< HEAD
 
 
-=======
->>>>>>> 2c054dde6a678434f52265ccb5d024c2655a3662
 
   //End Scene
   Scene endSailing = new Scene ("sailing_cutscene_back", "sailing_cutscene_back.png");

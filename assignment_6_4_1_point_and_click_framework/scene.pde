@@ -14,7 +14,6 @@ class Scene {
   boolean videoPlaying = false;
   
   
-  
 
 
 
@@ -71,7 +70,6 @@ class Scene {
     if (sceneName == "sailing_cutscene_back") { 
       last.play();
       last.read();
-<<<<<<< HEAD
       println(last.time(), last.duration());
       if(last.time() == 6.7) {
         videoPlaying = false;
@@ -89,12 +87,10 @@ class Scene {
     //    println("Video is over");
     //    videoPlaying = false;
     //  }
-    }
     
-=======
+    
       play = true;
     } 
->>>>>>> 2c054dde6a678434f52265ccb5d024c2655a3662
   }
 
 
