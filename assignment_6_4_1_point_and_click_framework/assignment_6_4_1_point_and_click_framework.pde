@@ -45,7 +45,7 @@ void setup()
   start.addGameObject(play);
 
   // FIRST SCENE
-  MoveToSceneObject toBay = new MoveToSceneObject("toBay", 1100, 400, 454/3, 286/3, "arrowRight.png", "bayScene");
+  MoveToSceneObject toBay = new MoveToSceneObject("toBay", 1100, 600, 454/3, 286/3, "arrowRight.png", "bayScene");
  
   MovingObject birds = new MovingObject("birds", 1, -150, 600, 600, "birds.png");
 
@@ -54,10 +54,10 @@ void setup()
   
   // Ship Repaired
   Scene repairedShip = new Scene("repairedShip", "repaired_ship.png");
-  MoveToSceneObject sail = new MoveToSceneObject("sailing_cutscene", 50, 400, 454/3, 286/3, "arrowLeft2.png", "sailing_cutscene");
-  RequireObject needMap = new RequireObject("requiresMap", 50, 400, 454/3, 286/3, "arrowLeft2.png", "You need to find a map!", map, sail);
+  MoveToSceneObject sail = new MoveToSceneObject("sailing_cutscene", 50, 600, 454/3, 286/3, "arrowLeft2.png", "sailing_cutscene");
+  RequireObject needMap = new RequireObject("requiresMap", 50, 600, 454/3, 286/3, "arrowLeft2.png", "You need to find a map!", map, sail);
   repairedShip.addGameObject(needMap);
-  MoveToSceneObject moveToBar = new MoveToSceneObject("barScene", 1100, 400, 454/3, 286/3, "arrowRight.png", "barScene");
+  MoveToSceneObject moveToBar = new MoveToSceneObject("barScene", 1100, 600, 454/3, 286/3, "arrowRight.png", "barScene");
   repairedShip.addGameObject(moveToBar);
 
   CollectableObject frontPiece1 = new CollectableObject("frontPiece", 1050, 500, 100, 100, frontPiece);
@@ -118,7 +118,7 @@ void setup()
 
   // SECOND SCENE
   Scene bayScene = new Scene("bayScene", "piratecabin.jpg");
-  MoveToSceneObject object3 = new MoveToSceneObject("strandedIsland", 50, 400, 100, 100, "arrowLeft2.png", "strandedIsland");
+  MoveToSceneObject object3 = new MoveToSceneObject("strandedIsland", 50, 600, 454/3, 286/3, "arrowLeft2.png", "strandedIsland");
   bayScene.addGameObject(object3);
   CollectableObject rope1 = new CollectableObject("rope1", 900, 550, 100, 100, rope);
   bayScene.addGameObject(rope1);
@@ -129,7 +129,7 @@ void setup()
 
   // FORTH SCENE
   Scene bar = new Scene("barScene", "bar_scene.png");
-  MoveToSceneObject goB = new MoveToSceneObject("repairedShip", 50, 500, 100, 80, "arrowLeft2.png", "repairedShip");
+  MoveToSceneObject goB = new MoveToSceneObject("repairedShip", 50, 600, 454/3, 286/3, "arrowLeft2.png", "repairedShip");
   bar.addGameObject(goB);
   CollectableObject map1 = new CollectableObject("map", 1150, 200, 100, 100, map);
   bar.addGameObject(map1);
@@ -151,7 +151,7 @@ void setup()
 
   //SAILING SCENE
   Scene sailingScene = new Scene ("sailing_cutscene", "sailing_cutscene.png");
-  MoveToSceneObject inTheSea = new MoveToSceneObject("treasure_scene", 50, 500, 100, 80, "arrowLeft2.png", "treasure_scene");
+  MoveToSceneObject inTheSea = new MoveToSceneObject("treasure_scene", 50, 600, 454/3, 286/3, "arrowLeft2.png", "treasure_scene");
   sailingScene.addGameObject(inTheSea);
 
   //TREASURE SCENE
@@ -173,7 +173,7 @@ void setup()
 
   //End Scene
   Scene endSailing = new Scene ("sailing_cutscene_back", "sailing_cutscene_back.png");
-  MoveToSceneObject end = new MoveToSceneObject("endingscreen", 1100, 400, 454/3, 286/3, "arrowRight.png", "endingscreen");
+  MoveToSceneObject end = new MoveToSceneObject("endingscreen", 1100, 600, 454/3, 286/3, "arrowRight.png", "endingscreen");
   endSailing.addGameObject(end);
 
   //End end scren
@@ -206,7 +206,6 @@ void draw()
   {
     image(last, 0, 0);
   }
-  println(mouseX, mouseY);
 }
 void mouseMoved() {
   sceneManager.getCurrentScene().mouseMoved();
