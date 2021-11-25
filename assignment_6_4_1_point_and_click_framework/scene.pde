@@ -1,5 +1,5 @@
 import processing.video.*;
- public boolean play = false;
+public boolean play = false;
 class Scene {
   public String sceneName;
   private PImage backgroundImage;
@@ -11,7 +11,7 @@ class Scene {
   float i = 100f;
   int timer = 0;
 
- 
+
 
   public Scene(String sceneName, String backgroundImageFile) {
     this.sceneName = sceneName;
@@ -49,17 +49,16 @@ class Scene {
   }
 
   public void draw(int wwidth, int wheight) {
-    println(sceneName);
+    
     image(backgroundImage, 0, 0, wwidth, wheight);
     for (GameObject object : gameObjects) {
       object.draw();
     }     
     if (sceneName == "sailing_cutscene_back") {
+      play = true;
       last.play();
       last.read();
-      play = true;
-    } else
-    {
+    } else {
       play = false;
     }
   }

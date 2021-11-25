@@ -41,7 +41,7 @@ void setup()
 
   // START
   Scene start = new Scene("start", "titlescreen.png");
-  MoveToSceneObject play = new MoveToSceneObject("toStart", 350, 200, 575, 210, "blank.png", "night");
+  MoveToSceneObject play = new MoveToSceneObject("toStart", 458, 400, 400, 150, "blank.png", "night");
   start.addGameObject(play);
 
   // FIRST SCENE
@@ -163,9 +163,11 @@ void setup()
   //"Congratulations guys!! We just found the best rum in the world!", "Let's get drunk, we deserve it!", "Aye, aye captain!"});
   RequireObject treasureDetect = new RequireObject("requiresKey", 798, 263, 91, 53, "blank.png", "You need a key!", treasureKey, rumB);
   treasureScene.addGameObject(treasureDetect);
-  MoveToSceneObject endScene = new MoveToSceneObject("sailing_cutscene_back", 1100, 400, 454/3, 286/3, "arrowRight.png", "sailing_cutscene_back");
-  RequireObject goOn = new RequireObject("requiresRum", 1100, 400, 454/3, 286/3, "arrowRight.png", "Find the treasure!", rum, endScene);
-  treasureScene.addGameObject(goOn);
+  
+  
+  //MoveToSceneObject endScene = new MoveToSceneObject("sailing_cutscene_back", 1100, 400, 454/3, 286/3, "arrowRight.png", "sailing_cutscene_back");
+  //RequireObject goOn = new RequireObject("requiresRum", 1100, 400, 454/3, 286/3, "arrowRight.png", "Find the treasure!", rum, endScene);
+  //treasureScene.addGameObject(goOn);
 
 
 
@@ -200,12 +202,11 @@ void draw()
   inventoryManager.drawSlots();
   inventoryManager.drawCollectables();
   mouseWentDown = false;
-  
   if(play)
   {
     image(last, 0, 0);
   }
-  
+  println(mouseX, mouseY);
 }
 void mouseMoved() {
   sceneManager.getCurrentScene().mouseMoved();
