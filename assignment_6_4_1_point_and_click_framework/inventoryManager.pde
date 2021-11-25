@@ -1,3 +1,5 @@
+boolean playMusic = false;
+
 class InventoryManager {
   private ArrayList<Collectable> collectables;
   private ArrayList<Collectable> markedForDeathCollectables;
@@ -9,6 +11,7 @@ class InventoryManager {
 
   public void addCollectable(Collectable collectable) {
     collectables.add(collectable);
+    playMusic = true;
   }
 
   public void removeCollectable(Collectable collectable) {

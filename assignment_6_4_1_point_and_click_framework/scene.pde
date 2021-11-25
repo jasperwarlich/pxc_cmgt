@@ -10,7 +10,7 @@ class Scene {
   private ArrayList<ReplaceImage> images;
   float i = 100f;
   int timer = 0;
-
+  int b = 100;
 
 
   public Scene(String sceneName, String backgroundImageFile) {
@@ -47,9 +47,7 @@ class Scene {
       recentlyAddedGameObjects  = new ArrayList<GameObject>();
     }
   }
-
   public void draw(int wwidth, int wheight) {
-    
     image(backgroundImage, 0, 0, wwidth, wheight);
     for (GameObject object : gameObjects) {
       object.draw();
@@ -58,7 +56,7 @@ class Scene {
       last.play();
       last.read();
       play = true;
-    } 
+    }
   }
 
 

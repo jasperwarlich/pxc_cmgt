@@ -12,6 +12,7 @@ boolean mouseWentDown = false;
 PImage birds;
 
 SoundFile background;
+SoundFile pickUp;
 
 Movie last;
 
@@ -26,6 +27,7 @@ void setup()
   Scene strandedIsland = new Scene("strandedIsland", "wrecked_ship.png");
   background = new SoundFile(this, "background.wav");
   //background.loop();
+  pickUp = new SoundFile(this, "PickUpItem.wav");
   frameRate(60);
   Collectable rope = new Collectable("rope", "rope.png");
   Collectable hammer = new Collectable("hammer", "hammer.png");
@@ -71,7 +73,6 @@ void setup()
   GameObject frontPieceImg = new GameObject("frontPiece", 763, 225, 150, 150, "frontpiece.png");
   GameObject shipAssetImg = new GameObject("shipAsset", 315, 38, 261, 123, "ship_asset.png");
   
-
 
   //MoveToSceneObject moveOn = new MoveToSceneObject("repaired_ship", 50, 400, 454/3, 286/2, "check.png", "repaired_ship");
   RequireObject shipObj3 = new RequireObject("requiresFrontPiece", 763, 195, 175, 164, "frontpiece_sil.png", "You need to find a front piece!", frontPiece, frontPieceImg);
@@ -203,6 +204,10 @@ void draw()
   if(play)
   {
     image(last, 0, 0);
+  }
+  if(playMusic){
+    pickUp.play();
+    playMusic = false;
   }
 }
 void mouseMoved() {
