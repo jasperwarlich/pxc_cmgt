@@ -54,13 +54,11 @@ class Scene {
     for (GameObject object : gameObjects) {
       object.draw();
     }     
-    if (sceneName == "sailing_cutscene_back") {
-      play = true;
+    if (sceneName == "sailing_cutscene_back") { 
       last.play();
       last.read();
-    } else {
-      play = false;
-    }
+      play = true;
+    } 
   }
 
 
