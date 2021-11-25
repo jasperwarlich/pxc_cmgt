@@ -1,8 +1,12 @@
 boolean playMusic = false;
-boolean hasTheKey = false;
+
+import processing.sound.*;
+
+
 class InventoryManager {
   private ArrayList<Collectable> collectables;
   private ArrayList<Collectable> markedForDeathCollectables;
+
 
   public InventoryManager() {
     collectables = new ArrayList<Collectable>();
@@ -12,6 +16,9 @@ class InventoryManager {
   public void addCollectable(Collectable collectable) {
     collectables.add(collectable);
     playMusic = true;
+        SoundFile pickup = new SoundFile(p, "PickUpItem.wav");
+
+    pickup.play();
   }
 
   public void removeCollectable(Collectable collectable) {
@@ -36,14 +43,8 @@ class InventoryManager {
     for (Collectable c : collectables) {
       PImage gameObjectImage;
       gameObjectImage = loadImage(c.getGameObjectImageFile());
-      image(gameObjectImage, x+10, 30, 40, 40);
+      image(gameObjectImage, x, 30-10, 40*1.5, 40*1.5);
       x += 100;
-      if (c.getName().equals("key")) {
-        hasTheKey = true;
-      }else
-      {
-      hasTheKey = false;
-      }
     }
   }
 
